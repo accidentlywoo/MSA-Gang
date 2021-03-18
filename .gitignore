@@ -6,7 +6,7 @@ build/
 !**/src/test/**/build/
 
 ### STS ###
-!**/src/main/resources/application.yml
+*/src/main/resources/application.yml
 
 ### IntelliJ IDEA ###
 .idea
