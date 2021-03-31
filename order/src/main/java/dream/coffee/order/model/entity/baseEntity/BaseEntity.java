@@ -11,9 +11,7 @@ import java.time.LocalDateTime;
 @Embeddable
 public class BaseEntity {
 	private Long createdAdminId;
-	@Convert(converter = LocalDateTime.class)
 	private LocalDateTime createdTime;
 	private Long updatedAdminId;
-	@Convert(converter = LocalDateTime.class)
 	private LocalDateTime updatedTime;
 }
