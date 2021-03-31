@@ -1,11 +1,10 @@
 package dream.coffee.order.model.entity;
 
+import dream.coffee.order.model.entity.baseEntity.BaseEntity;
 import lombok.Getter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 /**
  * Read Only
@@ -23,6 +22,11 @@ public class Member {
 	private boolean useMarketing;
 	private boolean isCertification;
 	private boolean isDormant;
+	@Embedded
+	private BaseEntity baseEntity;
+
+	@OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+	private List<Order> orders;
 
 	protected Member(){}
 }

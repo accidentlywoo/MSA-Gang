@@ -1,11 +1,10 @@
 package dream.coffee.user.model.entity;
 
+import dream.coffee.user.model.entity.baseEntity.BaseEntity;
 import lombok.Getter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -20,6 +19,8 @@ public class Member {
 	private boolean useMarketing;
 	private boolean isCertification;
 	private boolean isDormant;
+	@Embedded
+	private BaseEntity baseEntity;
 
 	protected Member(){}
 
@@ -53,6 +54,7 @@ public class Member {
 	 */
 	public Long changeDormantMember(boolean isDormant){
 		this.isDormant = isDormant;
+		this.baseEntity.setUpdatedTime(LocalDateTime.now());
 		return this.id;
 	}
 
@@ -64,6 +66,7 @@ public class Member {
 	 */
 	public Long changeCertificateMember(boolean isCertification){
 		this.isCertification = isCertification;
+		this.baseEntity.setUpdatedTime(LocalDateTime.now());
 		return this.id;
 	}
 
@@ -75,6 +78,7 @@ public class Member {
 	 */
 	public Long changeMarketingMember(boolean useMarketing){
 		this.useMarketing = useMarketing;
+		this.baseEntity.setUpdatedTime(LocalDateTime.now());
 		return this.id;
 	}
 
