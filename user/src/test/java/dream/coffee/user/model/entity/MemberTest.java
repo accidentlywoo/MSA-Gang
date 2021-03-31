@@ -31,7 +31,7 @@ class MemberTest {
 	@Rollback(false)
 	public void 회원가입(){
 	    // given
-		Member newMember = Member.createMember("test", "1", "test@email", true, true);
+		Member newMember = Member.createMember("test","test", "1", "test@email", true, true);
 		// when
 		memberRepository.save(newMember);
 
