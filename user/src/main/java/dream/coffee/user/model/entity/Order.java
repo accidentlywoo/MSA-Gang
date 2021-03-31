@@ -1,13 +1,18 @@
-package dream.coffee.order.model.entity;
+package dream.coffee.user.model.entity;
 
-import dream.coffee.order.model.entity.baseEntity.BaseEntity;
+
+import dream.coffee.user.model.entity.baseEntity.BaseEntity;
+import lombok.Getter;
 
 import javax.persistence.*;
-
 import java.util.List;
 
 import static javax.persistence.FetchType.LAZY;
 
+/**
+ * Read Only
+ */
+@Getter
 @Entity
 public class Order {
 	@Id
