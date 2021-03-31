@@ -1,10 +1,13 @@
-package dream.coffee.order.model.entity;
+package dream.coffee.user.model.entity;
 
-import dream.coffee.order.model.entity.baseEntity.BaseEntity;
+import dream.coffee.user.model.entity.baseEntity.BaseEntity;
 import lombok.Getter;
 
 import javax.persistence.*;
 
+/**
+ * Read Only
+ */
 @Getter
 @Entity
 public class Product {
@@ -25,13 +28,4 @@ public class Product {
 	private BaseEntity baseEntity;
 
 	protected Product(){}
-
-	public String orderProduct(int orderStock){
-		if(orderStock > currentStock)
-			throw new IllegalArgumentException("재고수량 초과");
-
-		currentStock-=orderStock;
-
-		return productCode;
-	}
 }
