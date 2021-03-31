@@ -10,6 +10,11 @@ jdbc:h2:tcp://localhost/{프로젝트 경로}/MSA/DataBase/coffee
 
 ## 사용 개발 방법론
 - TDD (Test Driven Development) : JUnit5 사용
+
+1. GREEN : 최소한의 코딩(기능 구현 우선), 테스트 통과
+2. REFACTOR : 구현 설계 계선, GREEN TEST 통과 유지
+3. RED : 실패하는 테스트 추가
+
 - DDD (Domain Driven Development) : 도메인 주도 개발
 
 ## Commit message Convention
