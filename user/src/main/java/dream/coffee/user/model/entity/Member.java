@@ -14,6 +14,7 @@ public class Member {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String memberId;
+	private String memberName;
 	private String password;
 	private String email;
 	private boolean useMarketing;
@@ -22,8 +23,9 @@ public class Member {
 
 	protected Member(){}
 
-	private Member(String memberId, String password, String email, boolean useMarketing, boolean isCertification) {
+	private Member(String memberId,String memberName, String password, String email, boolean useMarketing, boolean isCertification) {
 		this.memberId = memberId;
+		this.memberName = memberName;
 		this.password = password;
 		this.email = email;
 		this.useMarketing = useMarketing;
@@ -39,8 +41,8 @@ public class Member {
 	 * @param useMarketing
 	 * @return
 	 */
-	public static Member createMember(String memberId, String password, String email, boolean useMarketing, boolean isCertification){
-		return new Member(memberId, password, email, useMarketing,isCertification);
+	public static Member createMember(String memberId,String memberName, String password, String email, boolean useMarketing, boolean isCertification){
+		return new Member(memberId,memberName, password, email, useMarketing,isCertification);
 	}
 
 	/**
