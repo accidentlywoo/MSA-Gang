@@ -9,6 +9,7 @@ import javax.persistence.*;
 public class Payment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "payment_id")
 	private Long id;
 
 	@OneToOne(mappedBy = "payment")

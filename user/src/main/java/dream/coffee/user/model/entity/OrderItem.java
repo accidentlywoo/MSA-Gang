@@ -15,10 +15,11 @@ import static javax.persistence.FetchType.LAZY;
 public class OrderItem {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "order_item_id")
 	private Long id;
 
 	@ManyToOne(fetch = LAZY)
-	@JoinColumn(name = "id")
+	@JoinColumn(name = "order_id")
 	private Order order;
 
 	@OneToOne(fetch = LAZY)

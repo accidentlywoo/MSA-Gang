@@ -14,9 +14,11 @@ import static javax.persistence.FetchType.LAZY;
  */
 @Getter
 @Entity
+@Table(name = "orders")
 public class Order {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "order_id")
 	private Long id;
 
 	private String orderCode;
@@ -24,7 +26,7 @@ public class Order {
 	private int totalPrice;
 
 	@OneToOne(fetch = LAZY)
-	@JoinColumn(name = "id")
+	@JoinColumn(name = "payment_id")
 	private Payment payment;
 
 	@ManyToOne(fetch = LAZY)

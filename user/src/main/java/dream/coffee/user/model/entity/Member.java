@@ -5,6 +5,7 @@ import lombok.Getter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Getter
@@ -21,6 +22,9 @@ public class Member {
 	private boolean isDormant;
 	@Embedded
 	private BaseEntity baseEntity;
+
+	@OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+	private List<Order> orders;
 
 	protected Member(){}
 
