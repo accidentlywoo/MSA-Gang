@@ -1,6 +1,6 @@
-package dream.coffee.user.service;
+package dream.coffee.user.Member.service;
 
-import dream.coffee.user.repository.MemberRepository;
+import dream.coffee.user.Member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

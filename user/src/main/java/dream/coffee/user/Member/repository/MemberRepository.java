@@ -1,4 +1,4 @@
-package dream.coffee.user.repository;
+package dream.coffee.user.Member.repository;
 
 import dream.coffee.user.model.entity.Member;
 import org.springframework.data.jpa.repository.JpaRepository;
