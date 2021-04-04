@@ -1,6 +1,6 @@
 package dream.coffee.user.model.entity;
 
-
+import dream.coffee.user.model.OrderStatus;
 import dream.coffee.user.model.entity.baseEntity.BaseEntity;
 import lombok.Getter;
 
@@ -24,6 +24,9 @@ public class Order {
 	private String orderCode;
 
 	private int totalPrice;
+
+	@Enumerated(EnumType.STRING)
+	private OrderStatus status;
 
 	@OneToOne(fetch = LAZY)
 	@JoinColumn(name = "payment_id")
