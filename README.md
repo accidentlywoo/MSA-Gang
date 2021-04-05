@@ -8,29 +8,33 @@
 
 - 주요기능 : 회원 정보 관리
     
-- JPA(Hibernate), REST API
+- SpringBoot 2.4, Java11, JPA(Hibernate), REST API
 
 ### Order :
 주문 접수, 조회 주문 메세지 Queue 발행
 
 - 주요기능 : 커피 주문 및 주문 내역 전송
 
-- JPA(Hibernate), 카프카 메시지 발행, REST API
+- SpringBoot 2.4, Java11, JPA(Hibernate), 카프카 메시지 발행, REST API
   
 ### OrderProcess :
 주문 내력 알림
 
 - 주요기능 : 주문 내역 수신 저장 및 주문 상태 확인 조회
 
-- JPA(Hibernate), 카프카 메시지 구독, REST API
+- SpringBoot 2.4, Java11, JPA(Hibernate), 카프카 메시지 구독, REST API
 
-### (Front) View :
+### TODO 
+- (Front) View :
 (안만들 수도 있음)
 화면 구성
 
-- 주요기능 : 화면 구성, View
+주요기능 : 화면 구성, View
 
-- Thymeleaf,..
+ Thymeleaf,..
+
+- MSA 스럽게 Node.js 서버 하나....
+
 
 
 ## About DataBase 
