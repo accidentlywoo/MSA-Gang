@@ -1,6 +1,7 @@
 package dream.coffee.user.model.entity.baseEntity;
 
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.Convert;
 import javax.persistence.Embeddable;

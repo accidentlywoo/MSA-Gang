@@ -58,7 +58,6 @@ public class Member {
 	 */
 	public Long changeDormantMember(boolean isDormant){
 		this.isDormant = isDormant;
-		this.baseEntity.setUpdatedTime(LocalDateTime.now());
 		return this.id;
 	}
 
@@ -70,7 +69,6 @@ public class Member {
 	 */
 	public Long changeCertificateMember(boolean isCertification){
 		this.isCertification = isCertification;
-		this.baseEntity.setUpdatedTime(LocalDateTime.now());
 		return this.id;
 	}
 
