@@ -1,24 +1,47 @@
 package dream.coffee.user.Member.service;
 
+import dream.coffee.user.Member.repository.MemberRepository;
 import dream.coffee.user.UserApplicationTests;
 import dream.coffee.user.model.dto.SignUpReqDto;
+import dream.coffee.user.model.entity.Member;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.Rollback;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+
+@Transactional(readOnly = true)
 @DisplayName("MemberService TDD")
 class MemberServiceTest extends UserApplicationTests {
 
 	@Autowired private MemberService memberService;
 
+	@Autowired private MemberRepository memberRepository;
+
+	@Transactional
+	@Rollback(value = true)
 	@Test
 	@DisplayName("GREEN 회원가입")
 	public void 회원_가입_성공(){
 	    // given
-		SignUpReqDto.builder()
+		SignUpReqDto newMember = SignUpReqDto.builder()
+				.id("test")
+				.pwd("test")
+				.name("test")
+				.email("test")
+				.isCertifivation(true)
+				.isUseMarketing(true)
 				.build();
-	    // when
-	    // than
+		// when
+		Long newMemberId = memberService.SignUp(newMember);
+		Optional<Member> findAMember = memberRepository.findById(newMemberId);
+		// than
+		assertEquals(findAMember.get().getId(),newMemberId);
 	}
 
 	@Test
