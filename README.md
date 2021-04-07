@@ -14,6 +14,7 @@
 ![spring-jpa](https://img.shields.io/badge/Spring_jpa-2.4.5-6DB33F?Style=flat&logo=Spring&logoColor=85EA2D)
 ![spring-validation](https://img.shields.io/badge/Spring_validation-2.4.3-6DB33F?Style=flat&logo=Spring&logoColor=85EA2D)
 ![Lombok](https://img.shields.io/badge/Lombok-1.18.18-BC4521?Style=flat)
+![Gradle](https://img.shields.io/badge/gradle-gradle6.8.3-yellow?Style=flat)
 
 ### Order :
 주문 접수, 조회 주문 메세지 Queue 발행
@@ -27,6 +28,7 @@
 ![spring-validation](https://img.shields.io/badge/Spring_validation-2.4.3-6DB33F?Style=flat&logo=Spring&logoColor=85EA2D)
 ![Lombok](https://img.shields.io/badge/Lombok-1.18.18-BC4521?Style=flat)
 ![Kafka](https://img.shields.io/badge/kafka-kafa2.6.6-yellowgreen?Style=flat)
+![Gradle](https://img.shields.io/badge/gradle-gradle6.8.3-yellow?Style=flat)
   
 ### OrderProcess :
 주문 내력 알림
@@ -40,6 +42,7 @@
 ![spring-validation](https://img.shields.io/badge/Spring_validation-2.4.3-6DB33F?Style=flat&logo=Spring&logoColor=85EA2D)
 ![Lombok](https://img.shields.io/badge/Lombok-1.18.18-BC4521?Style=flat)
 ![Kafka](https://img.shields.io/badge/kafka-kafa2.6.6-yellowgreen?Style=flat)
+![Gradle](https://img.shields.io/badge/gradle-gradle6.8.3-yellow?Style=flat)
 
 ### TODO 
 - (Front) View :
@@ -52,6 +55,11 @@
 
 - MSA 스럽게 Node.js 서버 하나....
 
+## Data Base
+![MySQL InnoDB](https://img.shields.io/badge/MySQL InnoDB-10.4.13-61DAFB?
+
+## 인프라
+![Docker](https://img.shields.io/badge/Docker-gray?Style=flat&logo=Docker&logoColor=2496ED)
 
 
 ## About DataBase 
