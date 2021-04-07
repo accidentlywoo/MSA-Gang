@@ -8,7 +8,6 @@
 
 - 주요기능 : 회원 정보 관리
     
-- 
 ![JAVA ](https://img.shields.io/badge/JAVA_JDK-1.11-007396?Style=flat&logo=Java&logoColor=007396)
 ![SpringBoot](https://img.shields.io/badge/SpringBoot-2.4.3-6DB33F?Style=flat&logo=Spring&logoColor=6DB33F)
 ![spring-jpa](https://img.shields.io/badge/Spring_jpa-2.4.5-6DB33F?Style=flat&logo=Spring&logoColor=85EA2D)
@@ -21,7 +20,6 @@
 
 - 주요기능 : 커피 주문 및 주문 내역 전송
 
-- 
 ![JAVA ](https://img.shields.io/badge/JAVA_JDK-1.11-007396?Style=flat&logo=Java&logoColor=007396)
 ![SpringBoot](https://img.shields.io/badge/SpringBoot-2.4.3-6DB33F?Style=flat&logo=Spring&logoColor=6DB33F)
 ![spring-jpa](https://img.shields.io/badge/Spring_jpa-2.4.5-6DB33F?Style=flat&logo=Spring&logoColor=85EA2D)
@@ -35,7 +33,6 @@
 
 - 주요기능 : 주문 내역 수신 저장 및 주문 상태 확인 조회
 
-- 
 ![JAVA ](https://img.shields.io/badge/JAVA_JDK-1.11-007396?Style=flat&logo=Java&logoColor=007396)
 ![SpringBoot](https://img.shields.io/badge/SpringBoot-2.4.3-6DB33F?Style=flat&logo=Spring&logoColor=6DB33F)
 ![spring-jpa](https://img.shields.io/badge/Spring_jpa-2.4.5-6DB33F?Style=flat&logo=Spring&logoColor=85EA2D)
