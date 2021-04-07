@@ -56,7 +56,7 @@
 - MSA 스럽게 Node.js 서버 하나....
 
 ## Data Base
-![MySQL InnoDB](https://img.shields.io/badge/MySQL InnoDB-10.4.13-61DAFB?)
+![MySQL InnoDB](https://img.shields.io/badge/MySQL-8.0.23-61DAFB?Style=flat&logo=MySQL&logoColor=61DAFB)
 
 ## 인프라
 ![Docker](https://img.shields.io/badge/Docker-gray?Style=flat&logo=Docker&logoColor=2496ED)
