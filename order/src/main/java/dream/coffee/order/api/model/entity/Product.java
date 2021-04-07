@@ -26,12 +26,10 @@ public class Product {
 
 	protected Product(){}
 
-	public String orderProduct(int orderStock){
-		if(orderStock > currentStock)
-			throw new IllegalArgumentException("재고수량 초과");
-
-		currentStock-=orderStock;
-
-		return productCode;
+	public Product calculateStock(int orderNumberOfProduct){
+		if(currentStock < orderNumberOfProduct)
+			throw new IllegalArgumentException("주문 수량을 초과하였습니다.");
+		currentStock = currentStock - orderNumberOfProduct;
+		return this;
 	}
 }
