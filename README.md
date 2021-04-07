@@ -57,7 +57,7 @@
 
 ## 인프라
 ![Docker](https://img.shields.io/badge/Docker-gray?Style=flat&logo=Docker&logoColor=2496ED)
-![K8S](https://img.shields.io/badge/K8S-1.20?Style=flat)
+![K8S](https://img.shields.io/badge/K8S-K8S--1.20-blue)
 
 ## About DataBase 
 
