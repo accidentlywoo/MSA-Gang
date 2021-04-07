@@ -51,7 +51,7 @@ public class Order {
 	 *  주문 번호 : 결재 정보 = 1 : 1
 	 *  주문 번호 : 주문 아이템 = 1 : N
 	 *
-	 *  1) 주문 데이터 생성 -> 2) 주문 아이템 데이터 생성 -> 결제 데이터 생성 -> 주문 코드 생성
+	 *  1) 주문 데이터 생성 -> 2) 주문 코드 생성 -> 3) 주문 아이템 데이터 생성 -> 4) 결제 데이터 생성
 	 *
 	 * @param member
 	 * @return
@@ -62,14 +62,26 @@ public class Order {
 		return order;
 	}
 
+	/** TODO
+	 * 2) 주문 코드 생성
+	 *
+	 * @return
+	 */
+	public Long generateOrderCode(){
+		this.orderCode = "~~";
+		return this.id;
+	}
+
 	/**
-	 * 2) 주문 아이템 등록
+	 * 3) 주문 아이템 등록
 	 * 주문 정보 - 주문 아이템 정보 세팅
 	 *
 	 * @param orderItems
 	 * @return
 	 */
 	public Order settingOrderItem(List<OrderItem> orderItems){
+		if(this.orderCode == null)
+			throw new IllegalArgumentException("주문 코드가 생성되지 않았습니다.");
 		for(OrderItem item : orderItems){
 			orderItems.add(item);
 			item.setOrderInfo(this);
@@ -78,7 +90,7 @@ public class Order {
 	}
 
 	/**
-	 * 3) 결제 정보 생성
+	 * 4) 결제 정보 생성
 	 *
 	 * @param aPayment
 	 * @return
@@ -94,17 +106,7 @@ public class Order {
 		return this;
 	}
 
-	/** TODO
-	 * 4) 주문 코드 생성
-	 *
-	 * @return
-	 */
-	public Long generateOrderCode(){
-		if (this.payment == null)
-			throw new IllegalArgumentException("결제 정보가 없습니다.");
-		this.orderCode = "~~";
-		return this.id;
-	}
+
 
 	/**
 	 * 주문 상태 변경

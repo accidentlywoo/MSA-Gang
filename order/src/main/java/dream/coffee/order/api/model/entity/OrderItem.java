@@ -16,7 +16,7 @@ public class OrderItem {
 	private Long id;
 
 	@ManyToOne(fetch = LAZY)
-	@JoinColumn(name = "order_id")
+	@JoinColumn(name = "order_code")
 	private Order order;
 
 	@OneToOne(fetch = LAZY)
@@ -39,7 +39,7 @@ public class OrderItem {
 	}
 
 	/**
-	 * 2) 주문 아이템 생성
+	 * 3) 주문 아이템 생성
 	 *
 	 * @param product
 	 * @param numberOfProduct
@@ -51,7 +51,7 @@ public class OrderItem {
 	}
 
 	/**
-	 * 2) 주문 정보 세팅
+	 * 3) 주문 정보 세팅
 	 *
 	 * @param aOrder
 	 */
