@@ -90,10 +90,9 @@ public class Order {
 			this.totalPrice += item.getTotalprice();
 		}
 		this.payment = aPayment;
+		aPayment.setOrderInfo(this);
 		return this;
 	}
-
-
 
 	/** TODO
 	 * 4) 주문 코드 생성
@@ -114,6 +113,8 @@ public class Order {
 	 * @return
 	 */
 	public String changeOrderStatus(OrderStatus status){
+		if(this.payment == null || !this.payment.isApproval())
+			throw  new IllegalArgumentException("결제 정보 확인이 필요합니다.");
 		this.status = status;
 		return this.orderCode;
 	}
