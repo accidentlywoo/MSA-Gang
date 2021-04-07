@@ -47,7 +47,8 @@ jdbc:h2:tcp://localhost/{프로젝트 경로}/MSA/DataBase/coffee
 
 ./DataBase 파일경로에서 DDL -> DML 순서로 파일 돌려주세요.
 
-
+### ERD
+<img src="Diagram/ERD-Diagram.png" alt="erd 다이어그램">
 
 ## 사용 개발 방법론
 - TDD (Test Driven Development) : JUnit5 사용
