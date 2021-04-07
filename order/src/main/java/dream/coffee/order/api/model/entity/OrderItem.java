@@ -12,10 +12,11 @@ import static javax.persistence.FetchType.LAZY;
 public class OrderItem {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "order_item_id")
 	private Long id;
 
 	@ManyToOne(fetch = LAZY)
-	@JoinColumn(name = "id")
+	@JoinColumn(name = "order_id")
 	private Order order;
 
 	@OneToOne(fetch = LAZY)
@@ -31,5 +32,30 @@ public class OrderItem {
 
 	protected OrderItem(){}
 
+	private OrderItem(Product product, int totalprice, int numberOfProduct) {
+		this.product = product;
+		this.totalprice = totalprice;
+		this.numberOfProduct = numberOfProduct;
+	}
 
+	/**
+	 * 2) 주문 아이템 생성
+	 *
+	 * @param product
+	 * @param numberOfProduct
+	 * @return
+	 */
+	public static OrderItem createOrderItem(Product product, int numberOfProduct){
+		return new OrderItem(product, product.getPrice() * numberOfProduct, numberOfProduct);
+
+	}
+
+	/**
+	 * 2) 주문 정보 세팅
+	 *
+	 * @param aOrder
+	 */
+	protected void setOrderInfo(Order aOrder){
+		this.order = aOrder;
+	}
 }
