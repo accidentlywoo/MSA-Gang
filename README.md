@@ -8,21 +8,38 @@
 
 - 주요기능 : 회원 정보 관리
     
-- SpringBoot 2.4, Java11, JPA(Hibernate), REST API
+- 
+![JAVA ](https://img.shields.io/badge/JAVA_JDK-1.11-007396?Style=flat&logo=Java&logoColor=007396)
+![SpringBoot](https://img.shields.io/badge/SpringBoot-2.4.3-6DB33F?Style=flat&logo=Spring&logoColor=6DB33F)
+![spring-jpa](https://img.shields.io/badge/Spring_jpa-2.4.5-6DB33F?Style=flat&logo=Spring&logoColor=85EA2D)
+![spring-validation](https://img.shields.io/badge/Spring_validation-2.4.3-6DB33F?Style=flat&logo=Spring&logoColor=85EA2D)
+![Lombok](https://img.shields.io/badge/Lombok-1.18.18-BC4521?Style=flat)
 
 ### Order :
 주문 접수, 조회 주문 메세지 Queue 발행
 
 - 주요기능 : 커피 주문 및 주문 내역 전송
 
-- SpringBoot 2.4, Java11, JPA(Hibernate), 카프카 메시지 발행, REST API
+- 
+![JAVA ](https://img.shields.io/badge/JAVA_JDK-1.11-007396?Style=flat&logo=Java&logoColor=007396)
+![SpringBoot](https://img.shields.io/badge/SpringBoot-2.4.3-6DB33F?Style=flat&logo=Spring&logoColor=6DB33F)
+![spring-jpa](https://img.shields.io/badge/Spring_jpa-2.4.5-6DB33F?Style=flat&logo=Spring&logoColor=85EA2D)
+![spring-validation](https://img.shields.io/badge/Spring_validation-2.4.3-6DB33F?Style=flat&logo=Spring&logoColor=85EA2D)
+![Lombok](https://img.shields.io/badge/Lombok-1.18.18-BC4521?Style=flat)
+![Kafka](https://img.shields.io/badge/kafka-kafa2.6.6-yellowgreen?Style=flat)
   
 ### OrderProcess :
 주문 내력 알림
 
 - 주요기능 : 주문 내역 수신 저장 및 주문 상태 확인 조회
 
-- SpringBoot 2.4, Java11, JPA(Hibernate), 카프카 메시지 구독, REST API
+- 
+![JAVA ](https://img.shields.io/badge/JAVA_JDK-1.11-007396?Style=flat&logo=Java&logoColor=007396)
+![SpringBoot](https://img.shields.io/badge/SpringBoot-2.4.3-6DB33F?Style=flat&logo=Spring&logoColor=6DB33F)
+![spring-jpa](https://img.shields.io/badge/Spring_jpa-2.4.5-6DB33F?Style=flat&logo=Spring&logoColor=85EA2D)
+![spring-validation](https://img.shields.io/badge/Spring_validation-2.4.3-6DB33F?Style=flat&logo=Spring&logoColor=85EA2D)
+![Lombok](https://img.shields.io/badge/Lombok-1.18.18-BC4521?Style=flat)
+![Kafka](https://img.shields.io/badge/kafka-kafa2.6.6-yellowgreen?Style=flat)
 
 ### TODO 
 - (Front) View :
