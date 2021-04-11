@@ -52,24 +52,27 @@
 
 - MSA 스럽게 Node.js 서버 하나....
 
-## Data Base
+## Data Base (v1)
 ![MySQL InnoDB](https://img.shields.io/badge/MySQL-8.0.23-61DAFB?Style=flat&logo=MySQL&logoColor=61DAFB)
 
-## 인프라
+## 인프라 (v1)
 ![Docker](https://img.shields.io/badge/Docker-gray?Style=flat&logo=Docker&logoColor=2496ED)
+![Spring Cloud](https://img.shields.io/badge/spring%20cloud-spring%20cloud-red)
 ![K8S](https://img.shields.io/badge/K8S-K8S--1.20-blue)
 
-## About DataBase 
+## About DataBase (v1)
 
 - Test DataBase : H2 DataBase version : 1.4.200
 
 jdbc:h2:tcp://localhost/{프로젝트 경로}/MSA/DataBase/coffee
 
-- 실행 데이터 베이스 : MySql
+- 실행 데이터 베이스 : MySql (v1)
+
+개인프로젝트이다보니. 서비스 별로 DB구축하기는......TODO.
 
 ./DataBase 파일경로에서 DDL -> DML 순서로 파일 돌려주세요.
 
-### ERD
+### ERD (v1)
 <img src="Diagram/ERD-Diagram.png" alt="erd 다이어그램">
 
 ## 사용 개발 방법론
