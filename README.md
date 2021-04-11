@@ -1,5 +1,10 @@
 # MSA-Gang
 멀티모듈이 아닌 MSA구조를 설계해보기위해 구성되어 있습니다.
+- 초기 구성단계여서 단일 레파지토리에서 작업중입니다. 1차 서비스 완성이 되면 Repository를 분리할 계획입니다.
+
+각 서비스에서 사용하는 데이터를 논리적으로 분리합니다.
+
+모든 서비스들은 인터페이스(REST API)를 통해서만 소통합니다. 
 
 ## 구성
 ### User :
@@ -83,6 +88,13 @@ jdbc:h2:tcp://localhost/{프로젝트 경로}/MSA/DataBase/coffee
 3. RED : 실패하는 테스트 추가
 
 - DDD (Domain Driven Development) : 도메인 주도 개발
+
+- GitHub Flow
+개인 프로젝트이다보니, 어느정도 구성 한 뒤 고려할 계획입니다. 
+  
+관리 포인트가 지저분한것을 싫어하기 때문에, Github Flow를 사용할 계정입니다.
+
+Github Action으로 CI/CD 툴 개발할 계획입니다.
 
 ## Commit message Convention
 ```
