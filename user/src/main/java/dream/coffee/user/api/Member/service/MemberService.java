@@ -5,10 +5,12 @@ import dream.coffee.user.api.model.dto.MemberInfoDto;
 import dream.coffee.user.api.model.dto.SignUpReqDto;
 import dream.coffee.user.api.model.entity.Member;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
+
 
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
@@ -29,9 +31,12 @@ public class MemberService {
 		if (byMemberId.isPresent()) throw new IllegalArgumentException("이미 존재하는 아이디 입니다.");
 
 		Member newMember = Member.createMember(
-				signUpReqDto.getId(), signUpReqDto.getName(),
-				signUpReqDto.getPwd(), signUpReqDto.getEmail(),
-				signUpReqDto.isUseMarketing(), signUpReqDto.isCertifivation()
+				signUpReqDto.getId(),
+				signUpReqDto.getName(),
+				signUpReqDto.getPwd(),
+				signUpReqDto.getEmail(),
+				signUpReqDto.isUseMarketing(),
+				signUpReqDto.isCertifivation()
 		);
 		memberRepository.save(newMember);
 		return newMember.getId();
@@ -45,15 +50,16 @@ public class MemberService {
 	 */
 	public MemberInfoDto aMemberInfo(String memberId){
 		Optional<Member> findMemberById = memberRepository.findByMemberId(memberId);
-		if (!findMemberById.isPresent()) throw new IllegalArgumentException("존재하지 않은 아이디 입니다.");
+		if (findMemberById.isEmpty()) throw new IllegalArgumentException("존재하지 않은 아이디 입니다.");
 
-		return MemberInfoDto.builder()
-				.id(findMemberById.get().getMemberId())
-				.name(findMemberById.get().getMemberName())
-				.email(findMemberById.get().getEmail())
-				.isUseMarketing(findMemberById.get().isUseMarketing())
-				.isCertifivation(findMemberById.get().isCertification())
-				.joinedDate(findMemberById.get().getBaseEntity().getCreatedTime())
+		return MemberInfoDto
+				.builder()
+					.id(findMemberById.get().getMemberId())
+					.name(findMemberById.get().getMemberName())
+					.email(findMemberById.get().getEmail())
+					.isUseMarketing(findMemberById.get().isUseMarketing())
+					.isCertifivation(findMemberById.get().isCertification())
+					.joinedDate(findMemberById.get().getBaseEntity().getCreatedTime())
 				.build();
 	}
 }
