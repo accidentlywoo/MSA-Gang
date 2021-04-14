@@ -76,7 +76,7 @@ public class Member {
 	}
 
 	/**
-	 * 멤버 마케팅 사용여부 처
+	 * 멤버 회원 정보 변경
 	 *
 	 * @param useMarketing
 	 * @return
