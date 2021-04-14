@@ -1,95 +1,94 @@
-create table member (
-                        id bigint not null auto_increment,
-                        created_admin_id bigint,
-                        created_time datetime(6),
-                        updated_admin_id bigint,
-                        updated_time datetime(6),
-                        email varchar(255),
-                        is_certification bit not null,
-                        is_dormant bit not null,
-                        member_id varchar(255),
-                        member_name varchar(255),
-                        password varchar(255),
-                        use_marketing bit not null,
-                        primary key (id)
+create table if not exists member
+(
+	id bigint auto_increment
+		primary key,
+	created_admin_id bigint null,
+	created_time datetime(6) null,
+	updated_admin_id bigint null,
+	updated_time datetime(6) null,
+	email varchar(255) null,
+	is_certification bit not null,
+	is_dormant bit not null,
+	member_id varchar(255) null,
+	member_name varchar(255) null,
+	password varchar(255) null,
+	use_marketing bit not null,
+	constraint member_member_id_uindex
+		unique (member_id)
 ) engine=InnoDB
+;
 
 
-create table order_item (
-                            order_item_id bigint not null auto_increment,
-                            created_admin_id bigint,
-                            created_time datetime(6),
-                            updated_admin_id bigint,
-                            updated_time datetime(6),
-                            number_of_product integer not null,
-                            totalprice integer not null,
-                            order_id bigint,
-                            product_code bigint,
-                            primary key (order_item_id)
+create table if not exists order_item
+(
+	order_item_id bigint auto_increment
+		primary key,
+	created_admin_id bigint null,
+	created_time datetime null,
+	updated_admin_id bigint null,
+	updated_time datetime null,
+	number_of_product int not null,
+	totalprice int not null,
+	order_code varchar(30) null,
+	product_code varchar(30) null
+)
+engine=InnoDB
+;
+
+create index idx_order_item_product_code
+	on order_item (product_code);
+
+create index fk_order_code
+	on order_item (order_code);
+
+
+create table if not exists orders
+(
+	order_id bigint auto_increment
+		primary key,
+	created_admin_id bigint null,
+	created_time datetime(6) null,
+	updated_admin_id bigint null,
+	updated_time datetime(6) null,
+	order_code varchar(30) null,
+	status varchar(255) null,
+	total_price int not null,
+	member_id varchar(255) null,
+	payment_id bigint null,
+	constraint FKag8ppnkjvx255gj7lm3m18wkj
+		foreign key (payment_id) references payment (payment_id),
+	constraint fk_member_id
+		foreign key (member_id) references member (member_id)
 ) engine=InnoDB
+;
 
 
-create table orders (
-                        order_id bigint not null auto_increment,
-                        created_admin_id bigint,
-                        created_time datetime(6),
-                        updated_admin_id bigint,
-                        updated_time datetime(6),
-                        order_code varchar(255),
-                        total_price integer not null,
-                        member_id bigint,
-                        payment_id bigint,
-                        primary key (order_id)
+create table if not exists payment
+(
+	payment_id bigint auto_increment
+		primary key,
+	amount_of_payment int not null,
+	created_admin_id bigint null,
+	created_time datetime(6) null,
+	updated_admin_id bigint null,
+	updated_time datetime(6) null,
+	is_approval bit not null,
+	payment_method varchar(255) null
+)engine=InnoDB
+;
+
+create table if not exists product
+(
+	id bigint auto_increment
+		primary key,
+	created_admin_id bigint null,
+	created_time datetime null,
+	updated_admin_id bigint null,
+	updated_time datetime null,
+	current_stock int not null,
+	is_sale bit not null,
+	price int not null,
+	product_code varchar(30) null,
+	product_name varchar(255) null
 ) engine=InnoDB
-
-
-create table payment (
-                         payment_id bigint not null auto_increment,
-                         amount_of_payment integer not null,
-                         created_admin_id bigint,
-                         created_time datetime(6),
-                         updated_admin_id bigint,
-                         updated_time datetime(6),
-                         is_approval bit not null,
-                         payment_method varchar(255),
-                         primary key (payment_id)
-) engine=InnoDB
-
-
-create table product (
-                         id bigint not null auto_increment,
-                         created_admin_id bigint,
-                         created_time datetime(6),
-                         updated_admin_id bigint,
-                         updated_time datetime(6),
-                         current_stock integer not null,
-                         is_sale bit not null,
-                         price integer not null,
-                         product_code varchar(255),
-                         product_name varchar(255),
-                         primary key (id)
-) engine=InnoDB
-
-
-alter table order_item
-    add constraint FKt4dc2r9nbvbujrljv3e23iibt
-        foreign key (order_id)
-            references orders (order_id)
-
-
-alter table order_item
-    add constraint FKbykdp3n8proui9ssfjqj1jia9
-        foreign key (product_code)
-            references product (id)
-
-
-alter table orders
-    add constraint FKpktxwhj3x9m4gth5ff6bkqgeb
-        foreign key (member_id)
-            references member (id)
-
-
-alter table orders
-    add constraint FKag8ppnkjvx255gj7lm3m18wkj
-        foreign key (payment_id)
-            references payment (payment_id)
+;
