@@ -2,6 +2,7 @@ package dream.coffee.user.api.Member.service;
 
 import dream.coffee.user.api.Member.repository.MemberRepository;
 import dream.coffee.user.UserApplicationTests;
+import dream.coffee.user.api.model.dto.MemberInfoDto;
 import dream.coffee.user.api.model.dto.SignUpReqDto;
 import dream.coffee.user.api.model.entity.Member;
 import org.junit.jupiter.api.DisplayName;
@@ -13,10 +14,10 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 @Transactional(readOnly = true)
-@DisplayName("MemberService TDD")
+@DisplayName("MemberService Unit Test")
 class MemberServiceTest extends UserApplicationTests {
 
 	@Autowired private MemberService memberService;
@@ -30,42 +31,80 @@ class MemberServiceTest extends UserApplicationTests {
 	public void 회원_가입_성공(){
 	    // given
 		SignUpReqDto newMember = SignUpReqDto.builder()
-				.id("test")
-				.pwd("test")
-				.name("test")
-				.email("test")
-				.isCertifivation(true)
-				.isUseMarketing(true)
-				.build();
+									.id("test")
+									.pwd("test")
+									.name("test")
+									.email("test")
+									.isCertifivation(true)
+									.isUseMarketing(true)
+								.build();
 		// when
 		Long newMemberId = memberService.SignUp(newMember);
-		Optional<Member> findAMember = memberRepository.findById(newMemberId);
+
 		// than
-		assertEquals(findAMember.get().getId(),newMemberId);
+		Optional<Member> findAMember = memberRepository.findById(newMemberId);
+
+		assertNotNull(findAMember.get());
+
+		assertThat(findAMember.get().getMemberId()).isEqualTo("test");
+
+		assertThat(newMemberId).isEqualByComparingTo(findAMember.get().getId());
 	}
 
+	@Transactional
+	@Rollback(value = true)
 	@Test
 	@DisplayName("RED 회원가입")
 	public void 회원_가입_중복아이디(){
 		// given
+		SignUpReqDto alreadyExistMember = SignUpReqDto.builder()
+												.id("alreadyExist")
+												.pwd("alreadyExist")
+												.name("test")
+												.email("test@email.com")
+												.isCertifivation(true)
+												.isUseMarketing(true)
+											.build();
 		// when
+		assertThatThrownBy(
+					() -> {memberService.SignUp(alreadyExistMember);}
+				)
+				.isInstanceOf(IllegalArgumentException.class)
+				.hasMessageContaining("이미 존재하는 아이디 입니다.");
 		// than
+
 	}
 
 	@Test
 	@DisplayName("GREEN 회원 정보조회")
 	public void 회원_정보조회_성공(){
 		// given
+		String alreadyExistMemberId = "alreadyExist";
 		// when
+		MemberInfoDto aMemberInfo = memberService.aMemberInfo(alreadyExistMemberId);
 		// than
+		assertThat(aMemberInfo)
+				.isNotNull()
+				.extracting("id","name", "email")
+				.contains(
+						"alreadyExist", "test", "test@email.com"
+				)
+				;
+
 	}
 
 	@Test
-	@DisplayName("GREEN 회원 정보실패")
+	@DisplayName("RED 회원 정보실패")
 	public void 회원_정보조회_실패(){
 		// given
+		String doesntExistMemberId = "notExist";
 		// when
 		// than
+		assertThatThrownBy(
+				() -> {memberService.aMemberInfo(doesntExistMemberId);}
+		)
+				.isInstanceOf(IllegalArgumentException.class)
+				.hasMessageContaining("존재하지 않은 아이디 입니다.");
 	}
 
 	@Test
@@ -95,31 +134,6 @@ class MemberServiceTest extends UserApplicationTests {
 	@Test
 	@DisplayName("RED 회원 활성화여부 실패 :: 탈퇴 실패")
 	public void 회원_활성화여부_변경_실패(){
-		// given
-		// when
-		// than
-	}
-
-	// TODO -- 로그인 구분해야될 듯
-	@Test
-	@DisplayName("GREEN 로그인")
-	public void 로그인_성공(){
-		// given
-		// when
-		// than
-	}
-
-	@Test
-	@DisplayName("RED 로그인")
-	public void 로그인_잘못된비밀번호(){
-		// given
-		// when
-		// than
-	}
-
-	@Test
-	@DisplayName("RED 로그인")
-	public void 로그인_비활성화사용자(){
 		// given
 		// when
 		// than
