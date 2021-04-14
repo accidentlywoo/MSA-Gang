@@ -5,7 +5,6 @@ import lombok.extern.log4j.Log4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-@Log4j
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 @Service
