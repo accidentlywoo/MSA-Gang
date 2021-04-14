@@ -2,12 +2,14 @@ package dream.coffee.user.api.model.entity;
 
 import dream.coffee.user.api.model.entity.baseEntity.BaseEntity;
 import lombok.Getter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
+@ToString
 @Getter
 public class Member {
 	@Id
@@ -35,6 +37,7 @@ public class Member {
 		this.email = email;
 		this.useMarketing = useMarketing;
 		this.isCertification = isCertification;
+		this.isDormant = false;
 	}
 
 	/**
