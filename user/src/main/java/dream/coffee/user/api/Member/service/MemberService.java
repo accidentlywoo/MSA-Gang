@@ -1,6 +1,7 @@
 package dream.coffee.user.api.Member.service;
 
 import dream.coffee.user.api.Member.repository.MemberRepository;
+import dream.coffee.user.api.model.dto.MemberInfoChangeReqDto;
 import dream.coffee.user.api.model.dto.MemberInfoDto;
 import dream.coffee.user.api.model.dto.SignUpReqDto;
 import dream.coffee.user.api.model.entity.Member;
@@ -60,6 +61,18 @@ public class MemberService {
 					.isUseMarketing(findMemberById.get().isUseMarketing())
 					.isCertifivation(findMemberById.get().isCertification())
 					.joinedDate(findMemberById.get().getBaseEntity().getCreatedTime())
+				.build();
+	}
+
+	/**
+	 * 회원 정보 변경
+	 *  ::
+	 *
+	 * @return
+	 */
+	public MemberInfoDto changeAMemberInfo(MemberInfoChangeReqDto reqDto){
+		return MemberInfoDto
+				.builder()
 				.build();
 	}
 }
