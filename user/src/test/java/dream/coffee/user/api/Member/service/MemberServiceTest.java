@@ -108,16 +108,39 @@ class MemberServiceTest extends UserApplicationTests {
 	}
 
 	@Test
-	@DisplayName("GREEN 회원정보 변경 :: 마케팅수신여부")
-	public void 회원_마케팅수신여부_변경(){
+	@DisplayName("GREEN 회원정보 변경 :: 마케팅수신여부, 이름 변경, 이메일 변경")
+	public void 회원_정보_변경(){
 		// given
 		// when
 		// than
 	}
 
 	@Test
-	@DisplayName("RED 회원정보 변경 :: 마케팅수신여부 실패")
-	public void 회원_마케팅수신여부_변경_실패(){
+	@DisplayName("RED 회원정보 변경 :: 마케팅수신여부, 이름 변경, 이메일 변경 실패")
+	public void 회원_정보_변경_실패(){
+		// given
+		// when
+		// than
+	}
+
+	@Test
+	public void 회원_비밀번호_변경(){
+		// given
+		// when
+		// than
+	}
+
+	@Test
+	@DisplayName("GREEN 회원정보 인증 성공")
+	public void 회원_인증하기(){
+		// given
+		// when
+		// than
+	}
+
+	@Test
+	@DisplayName("RED 회원정보 인증 실패")
+	public void 회원_인증하기_실패(){
 		// given
 		// when
 		// than
