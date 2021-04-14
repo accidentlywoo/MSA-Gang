@@ -94,7 +94,7 @@ jdbc:h2:tcp://localhost/{프로젝트 경로}/MSA/DataBase/coffee
   
 관리 포인트가 지저분한것을 싫어하기 때문에, Github Flow를 사용할 계정입니다.
 
-Github Action으로 CI/CD 툴 개발할 계획입니다.
+Github Action으로 CI/CD 툴 개발할 계획입니다.ㅎ
 
 ## Commit message Convention
 ```
@@ -108,3 +108,22 @@ test (when adding missing tests)
 chore (maintain)
 ```
 
+## 기술 스택 소개
+### Spring Cloud에서 MSA간 통신
+1) RestTemplate : 전통적인 방법
+```
+RestTemplate restTemplate = new RestTemplate();
+restTemplate.getForObject("http://localhost:8080/", User.class, 200); //직접적 IP, Port필요 
+```   
+
+2) Feign Client : Spring Cloud 에서 제공하는 API
+```
+@FeignClient("store") // MSA 이름으로 호출 가능
+public interface StoreClient{
+    @RequestMapping(method=RequestMethod.GET, value="/stores")
+    List<Store> getStores();
+}
+```
+
+### JUnit5 + AssertJ
+JUnit5 와 서드파티 라이브러리인 AssertJ를 활용해 테스트 가독성을 높이려 노력하고 있습니다.
