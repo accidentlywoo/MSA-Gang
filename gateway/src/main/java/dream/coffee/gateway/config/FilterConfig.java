@@ -12,8 +12,9 @@ public class FilterConfig {
 		return builder.routes()
 				.route(r -> r.path("/user/**")
 						.filters(f -> f.addRequestHeader("user-request", "user-request-header")
-								.addResponseHeader("user-response", "user-response-header")
-						).uri("http://localhost:8080/")
+									   .addResponseHeader("user-response", "user-response-header")
+						)
+						.uri("http://localhost:8080/")
 				)
 				.build();
 
