@@ -57,12 +57,30 @@
 
 - MSA 스럽게 Node.js 서버 하나....
 
+### 프로젝트 모듈로 잡아야될 폴더
+
+- discoveryserver
+- gateway
+- user
+- order
+- oderProcess
+
+### 추가 사항
+1. YAML 파일 공개하지 않습니다.
+
+보안문제로, .yml 파일 공개하지 않습니다.
+
+따로 정리해서, 문서화한 뒤 공유하겠습니다.
+
 ## Data Base (v1)
 ![MySQL InnoDB](https://img.shields.io/badge/MySQL-8.0.23-61DAFB?Style=flat&logo=MySQL&logoColor=61DAFB)
 
 ## 인프라 (v1)
 ![Docker](https://img.shields.io/badge/Docker-gray?Style=flat&logo=Docker&logoColor=2496ED)
 ![Spring Cloud](https://img.shields.io/badge/spring%20cloud-spring%20cloud-red)
+![Discovery](https://img.shields.io/badge/eureka-eureka--server%2Fclient-orange)
+![LoadBalancer](https://img.shields.io/badge/spring%20cloud%20loadbalancer-spring%20cloud%20loadbalancer%203.0.2-orange)
+![GateWay](https://img.shields.io/badge/spring%20cloud%20gateway-spring%20cloud%20gateway%203.0.2-orange)
 ![K8S](https://img.shields.io/badge/K8S-K8S--1.20-blue)
 
 ## About DataBase (v1)
@@ -127,3 +145,5 @@ public interface StoreClient{
 
 ### JUnit5 + AssertJ
 JUnit5 와 서드파티 라이브러리인 AssertJ를 활용해 테스트 가독성을 높이려 노력하고 있습니다.
+
+- 참고 : [AssertJ](https://assertj.github.io/doc/)
