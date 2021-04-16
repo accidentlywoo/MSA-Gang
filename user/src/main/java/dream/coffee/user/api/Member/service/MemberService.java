@@ -66,13 +66,26 @@ public class MemberService {
 
 	/**
 	 * 회원 정보 변경
-	 *  ::
 	 *
 	 * @return
 	 */
 	public MemberInfoDto changeAMemberInfo(MemberInfoChangeReqDto reqDto){
+
+		Optional<Member> byMemberId = memberRepository.findByMemberId(reqDto.getId());
+
+		if (byMemberId.isEmpty()) throw new IllegalArgumentException("존재하지 않은 아이디 입니다.");
+
+		Member updatedMemberInfo = byMemberId.get().changeMemberInfo(reqDto.getName(), reqDto.getEmail(), reqDto.isUseMarketing());
+
+		memberRepository.save(updatedMemberInfo);
+
 		return MemberInfoDto
 				.builder()
+					.id(updatedMemberInfo.getMemberId())
+					.name(updatedMemberInfo.getMemberName())
+					.email(updatedMemberInfo.getEmail())
+					.isCertifivation(updatedMemberInfo.isCertification())
+					.isUseMarketing(updatedMemberInfo.isUseMarketing())
 				.build();
 	}
 }
