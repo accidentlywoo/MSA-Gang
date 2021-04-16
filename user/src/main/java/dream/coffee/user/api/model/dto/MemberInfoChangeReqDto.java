@@ -9,8 +9,9 @@ import java.time.LocalDateTime;
 @Data
 @Builder
 public class MemberInfoChangeReqDto {
-	private String name;
 	@NotNull
+	private String id;
+	private String name;
 	private String email;
 	@NotNull
 	private boolean isUseMarketing;

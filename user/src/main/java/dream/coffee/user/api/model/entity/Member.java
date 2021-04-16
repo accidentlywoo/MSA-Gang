@@ -70,21 +70,29 @@ public class Member {
 	 * @param isCertification
 	 * @return
 	 */
-	public Long changeCertificateMember(boolean isCertification){
+	public Long changeMemberCertificate(boolean isCertification){
 		this.isCertification = isCertification;
 		return this.id;
 	}
 
 	/**
-	 * 멤버 회원 정보 변경
+	 *  멤버 회원 정보 변경
+	 * 	  :: 회원이 자유롭게 변경할 수 있는 정보 : 이름, 이메일, 마케팅 수신 여부.
 	 *
-	 * @param useMarketing
+	 * @param name
+	 * @param email
+	 * @param isUseMarketing
 	 * @return
 	 */
-	public Long changeMarketingMember(boolean useMarketing){
-		this.useMarketing = useMarketing;
+	public Member changeMemberInfo(String name, String email, boolean isUseMarketing){
+		if(name != null)
+			memberName = name;
+		if(email != null)
+			this.email = email;
+		if(isUseMarketing != useMarketing)
+			useMarketing = isUseMarketing;
 		this.baseEntity.setUpdatedTime(LocalDateTime.now());
-		return this.id;
+		return this;
 	}
 
 }
