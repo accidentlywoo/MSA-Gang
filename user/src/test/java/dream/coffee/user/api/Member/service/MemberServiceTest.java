@@ -2,6 +2,7 @@ package dream.coffee.user.api.Member.service;
 
 import dream.coffee.user.api.Member.repository.MemberRepository;
 import dream.coffee.user.UserApplicationTests;
+import dream.coffee.user.api.model.dto.MemberInfoChangeReqDto;
 import dream.coffee.user.api.model.dto.MemberInfoDto;
 import dream.coffee.user.api.model.dto.SignUpReqDto;
 import dream.coffee.user.api.model.entity.Member;
@@ -107,12 +108,69 @@ class MemberServiceTest extends UserApplicationTests {
 				.hasMessageContaining("존재하지 않은 아이디 입니다.");
 	}
 
+	@Transactional
+	@Rollback(value = true)
 	@Test
-	@DisplayName("GREEN 회원정보 변경 :: 마케팅수신여부, 이름 변경, 이메일 변경")
-	public void 회원_정보_변경(){
+	@DisplayName("GREEN 회원정보 변경 :: 이름 변경")
+	public void 회원_정보_이름_변경(){
 		// given
+		String fixture = "changeName";
+		MemberInfoChangeReqDto changeNameReq = MemberInfoChangeReqDto
+			.builder()
+				.id("alreadyExist")
+				.name(fixture)
+				.isUseMarketing(true)
+			.build();
 		// when
+		MemberInfoDto changedMemberInfo = memberService.changeAMemberInfo(changeNameReq);
 		// than
+		assertThat(changedMemberInfo.getName())
+				.isNotNull()
+				.as("Check Changed Name = %s ", changedMemberInfo.getName())
+				.isEqualTo(fixture);
+	}
+
+	@Transactional
+	@Rollback(value = true)
+	@Test
+	@DisplayName("GREEN 회원정보 변경 :: 이메일 변경")
+	public void 회원_정보_이메일_변경(){
+		// given
+		String fixture = "change@email.com";
+		MemberInfoChangeReqDto changeEmailReq = MemberInfoChangeReqDto
+			.builder()
+				.id("alreadyExist")
+				.email(fixture)
+				.isUseMarketing(true)
+			.build();
+
+		// when
+		MemberInfoDto changedMemberInfo = memberService.changeAMemberInfo(changeEmailReq);
+		// than
+		assertThat(changedMemberInfo.getEmail())
+				.isNotNull()
+				.as("Check Changed Email = %s ", changedMemberInfo.getEmail())
+				.isEqualTo(fixture);
+	}
+
+	@Transactional
+	@Rollback(value = true)
+	@Test
+	@DisplayName("GREEN 회원정보 변경 :: 마케팅수신여부")
+	public void 회원_정보_마케팅수신여_변경(){
+		// given
+		MemberInfoChangeReqDto changeUseMarketingReq = MemberInfoChangeReqDto
+			.builder()
+				.id("alreadyExist")
+				.isUseMarketing(false) //true -> false
+			.build();
+		// when
+		MemberInfoDto changedMemberInfo = memberService.changeAMemberInfo(changeUseMarketingReq);
+		// than
+		assertThat(changedMemberInfo.isUseMarketing())
+				.isNotNull()
+				.as("Check Changed isUseMarketing = %s ", changedMemberInfo.isUseMarketing())
+				.isEqualTo(false);
 	}
 
 	@Test
