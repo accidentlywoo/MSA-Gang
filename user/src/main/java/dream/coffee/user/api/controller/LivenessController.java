@@ -22,4 +22,9 @@ public class LivenessController {
 		log.info(header);
 		return "Hello World In User Service";
 	}
+
+	@GetMapping("/check")
+	public String check(){
+		return "Quak Quak!";
+	}
 }
