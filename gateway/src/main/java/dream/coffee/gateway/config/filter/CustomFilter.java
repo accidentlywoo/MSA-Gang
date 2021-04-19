@@ -1,4 +1,4 @@
-package dream.coffee.gateway.config;
+package dream.coffee.gateway.config.filter;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.gateway.filter.GatewayFilter;
