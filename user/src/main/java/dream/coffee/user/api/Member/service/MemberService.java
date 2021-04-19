@@ -75,7 +75,7 @@ public class MemberService {
 
 		if (byMemberId.isEmpty()) throw new IllegalArgumentException("존재하지 않은 아이디 입니다.");
 
-		Member updatedMemberInfo = byMemberId.get().changeMemberInfo(reqDto.getName(), reqDto.getEmail(), reqDto.isUseMarketing());
+		Member updatedMemberInfo = byMemberId.get().changeMemberInfo(reqDto.getName(), reqDto.getEmail(), reqDto.getIsUseMarketing());
 
 		memberRepository.save(updatedMemberInfo);
 

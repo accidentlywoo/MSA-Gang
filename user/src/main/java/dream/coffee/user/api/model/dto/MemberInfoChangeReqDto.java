@@ -13,6 +13,5 @@ public class MemberInfoChangeReqDto {
 	private String id;
 	private String name;
 	private String email;
-	@NotNull
-	private boolean isUseMarketing;
+	private Boolean isUseMarketing;
 }

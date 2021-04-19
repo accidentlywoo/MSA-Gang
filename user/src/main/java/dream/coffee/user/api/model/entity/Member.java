@@ -84,12 +84,12 @@ public class Member {
 	 * @param isUseMarketing
 	 * @return
 	 */
-	public Member changeMemberInfo(String name, String email, boolean isUseMarketing){
+	public Member changeMemberInfo(String name, String email, Boolean isUseMarketing){
 		if(name != null)
 			memberName = name;
 		if(email != null)
 			this.email = email;
-		if(isUseMarketing != useMarketing)
+		if(isUseMarketing != null)
 			useMarketing = isUseMarketing;
 		this.baseEntity.setUpdatedTime(LocalDateTime.now());
 		return this;
