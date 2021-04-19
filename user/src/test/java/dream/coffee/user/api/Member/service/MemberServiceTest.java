@@ -119,7 +119,6 @@ class MemberServiceTest extends UserApplicationTests {
 			.builder()
 				.id("alreadyExist")
 				.name(fixture)
-				.isUseMarketing(true)
 			.build();
 		// when
 		MemberInfoDto changedMemberInfo = memberService.changeAMemberInfo(changeNameReq);
@@ -141,7 +140,6 @@ class MemberServiceTest extends UserApplicationTests {
 			.builder()
 				.id("alreadyExist")
 				.email(fixture)
-				.isUseMarketing(true)
 			.build();
 
 		// when
@@ -162,7 +160,7 @@ class MemberServiceTest extends UserApplicationTests {
 		MemberInfoChangeReqDto changeUseMarketingReq = MemberInfoChangeReqDto
 			.builder()
 				.id("alreadyExist")
-				.isUseMarketing(false) //true -> false
+				.isUseMarketing(Boolean.FALSE)
 			.build();
 		// when
 		MemberInfoDto changedMemberInfo = memberService.changeAMemberInfo(changeUseMarketingReq);
