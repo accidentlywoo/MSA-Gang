@@ -2,6 +2,7 @@ package dream.coffee.order.api.model.entity;
 
 import dream.coffee.order.api.model.OrderStatus;
 import dream.coffee.order.api.model.entity.baseEntity.BaseEntity;
+import lombok.Getter;
 
 import javax.persistence.*;
 
@@ -10,7 +11,9 @@ import java.util.List;
 
 import static javax.persistence.FetchType.LAZY;
 
+@Getter
 @Entity
+@Table(name = "orders")
 public class Order {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
