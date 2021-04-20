@@ -201,5 +201,21 @@ JUnit5 와 서드파티 라이브러리인 AssertJ를 활용해 테스트 가독
 
 Gateway Client > Gateway Handler > Global Filter > Custom filter > Logging Filter > Proxied Service
 
+### 스프링 부트 서버를 실행시키는 다양한 방법
+1. @SpringBootApplication run 실행
+   
+2. IntelliJ Run 
+    - Edit Configuration.. [클릭]
+    - VM Options에서 -Dserver.port=~65535
+    
+3. cli gradle JVM Argument 떼려 넣어버리기
+    - ```서비스/gradlew bootRun -Dspring-boot.run.jvmArguments='-Dserver.port=~65535'```
+    
+4. cli 빌드 및 jar 실행
+    - ```서비스/gradlew build``` : 테스트코드 실패하면 빌드안됨.
+    - ```서비스/gradlew bootJar```
+    - ```java -jar -Dserver.port=8080 (기본설정)서비스/build/libs/~-SNAPSHOT.jar```
+   
+
 ## 참고 사이트
 -[RedHat CI 일반적인 프로세스](https://developers.redhat.com/blog/2017/09/06/continuous-integration-a-typical-process/)
