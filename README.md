@@ -87,13 +87,16 @@
 
 ## Data Base (v1)
 ![MySQL InnoDB](https://img.shields.io/badge/MySQL-8.0.23-61DAFB?Style=flat&logo=MySQL&logoColor=61DAFB)
+(로컬 실행)
 
-## 인프라 (v1)
-![Docker](https://img.shields.io/badge/Docker-gray?Style=flat&logo=Docker&logoColor=2496ED)
+## 인프라 (v1) :: 로컬 포트 호도리 구성 방식 :: TODO 구성도 그리기
 ![Spring Cloud](https://img.shields.io/badge/spring%20cloud-spring%20cloud-red)
 ![Discovery](https://img.shields.io/badge/eureka-eureka--server%2Fclient-orange)
 ![LoadBalancer](https://img.shields.io/badge/spring%20cloud%20loadbalancer-spring%20cloud%20loadbalancer%203.0.2-orange)
 ![GateWay](https://img.shields.io/badge/spring%20cloud%20gateway-spring%20cloud%20gateway%203.0.2-orange)
+
+## 인프라 (v1.1)
+![Docker](https://img.shields.io/badge/Docker-gray?Style=flat&logo=Docker&logoColor=2496ED)
 ![K8S](https://img.shields.io/badge/K8S-K8S--1.20-blue) (Spring Cloud K8S 유력후보)
 
 ## About DataBase (v1)
