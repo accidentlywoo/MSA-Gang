@@ -18,7 +18,7 @@ public class LivenessController {
 	@GetMapping("/message")
 	public String message(@RequestHeader("order-process-request") String header){
 		log.info(header);
-		return "Hello World In User Service";
+		return "Hello World In Order Process";
 	}
 
 	@GetMapping("/check")
