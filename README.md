@@ -147,3 +147,7 @@ public interface StoreClient{
 JUnit5 와 서드파티 라이브러리인 AssertJ를 활용해 테스트 가독성을 높이려 노력하고 있습니다.
 
 - 참고 : [AssertJ](https://assertj.github.io/doc/)
+
+### Spring Cloud Gateway Life Cycle!
+
+Gateway Client > Gateway Handler > Global Filter > Custom filter > Logging Filter > Proxied Service
