@@ -14,7 +14,13 @@ public class FilterConfig {
 						.filters(f -> f.addRequestHeader("user-request", "user-request-header")
 									   .addResponseHeader("user-response", "user-response-header")
 						)
-						.uri("http://localhost:8080/")
+						.uri("http://localhost:8081/")
+				)
+				.route(r -> r.path("/order/**")
+						.filters(f -> f.addRequestHeader("order-request", "order-request-header")
+								.addResponseHeader("order-response", "order-response-header")
+						)
+						.uri("http://localhost:8082/")
 				)
 				.build();
 
