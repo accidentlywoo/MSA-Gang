@@ -46,7 +46,20 @@
 ![Kafka](https://img.shields.io/badge/kafka-kafa2.6.6-yellowgreen?Style=flat)
 ![Gradle](https://img.shields.io/badge/gradle-gradle6.8.3-yellow?Style=flat)
 
-### TODO 
+### TODO
+- Spring Security : 
+(곧.. 적용)
+  
+- JWT와 AuthorizationFilter :
+(곧.. 적용)
+
+- Kafka :
+(고오옫 적용)
+
+- CircuitBreaker를 이용한 빠른 에러발생 (MSA!) :
+  
+- 모니터링 툴은 Prometheus 고려 중 :  
+  
 - (Front) View :
 (안만들 수도 있음)
 화면 구성
@@ -81,7 +94,7 @@
 ![Discovery](https://img.shields.io/badge/eureka-eureka--server%2Fclient-orange)
 ![LoadBalancer](https://img.shields.io/badge/spring%20cloud%20loadbalancer-spring%20cloud%20loadbalancer%203.0.2-orange)
 ![GateWay](https://img.shields.io/badge/spring%20cloud%20gateway-spring%20cloud%20gateway%203.0.2-orange)
-![K8S](https://img.shields.io/badge/K8S-K8S--1.20-blue)
+![K8S](https://img.shields.io/badge/K8S-K8S--1.20-blue) (Spring Cloud K8S 유력후보)
 
 ## About DataBase (v1)
 
@@ -97,6 +110,13 @@ jdbc:h2:tcp://localhost/{프로젝트 경로}/MSA/DataBase/coffee
 
 ### ERD (v1)
 <img src="Diagram/ERD-Diagram.png" alt="erd 다이어그램">
+
+- v2 :: TODO
+1. Member LogIn/Out 정보 저장 테이블
+2. Product Category 정보 테이블
+3. Product Info 세부 정보 테이블
+4. Product Review 정보 테이블
+5. Spring Data Redis - 최근 조회 상품, 좋아요 Hit
 
 ## 사용 개발 방법론
 - TDD (Test Driven Development) : JUnit5 사용 feat. BDD
@@ -139,7 +159,10 @@ chore (maintain)
 ```
 
 ## 기술 스택 소개
-### Spring Cloud에서 MSA간 통신
+### MSA란 무엇인가..
+그것은. 아주 길고도 험난한 여정..
+
+### Spring Cloud에서 서비스들간 통신
 1) RestTemplate : 전통적인 방법
 ```
 RestTemplate restTemplate = new RestTemplate();
