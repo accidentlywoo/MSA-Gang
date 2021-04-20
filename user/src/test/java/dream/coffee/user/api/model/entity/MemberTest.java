@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,49 +28,40 @@ class MemberTest {
 
 	@Autowired private MemberRepository memberRepository;
 
-	private static Member newMember;
-
 	@Test
 	public void testEntityManager(){
 		assertNotNull(entityManager);
 	}
 
-	@BeforeAll
-	public static void Setting_Save(){
-		newMember = Member.createMember("test","test", "1", "test@email", true, true);
-
-	}
-
 	@Test
 	public void 멤버_저장_테스트(){
-		memberRepository.save(newMember);
+		memberRepository.save(Member.createMember("test","test", "1", "test@email", true, true));
 		// when
-		Optional<Member> byId = memberRepository.findById(newMember.getId());
+		Optional<Member> byId = memberRepository.findByMemberId("test");
 		// than
 		assertEquals("test", byId.get().getMemberId());
 	}
 
 	@Test
 	public void 조회_테스트(){
-		memberRepository.save(newMember);
+		memberRepository.save(Member.createMember("test","test", "1", "test@email", true, true));
 		// when
 		List<Member> all = memberRepository.findAll();
 
 		Optional<Member> findById = memberRepository.findByMemberId("test");
 		// than
-		assertEquals(1, all.size());
+		assertEquals(2, all.size());
 		assertNotNull(findById);
-		assertThat(all).hasSize(1).contains(findById.get());
+		assertThat(all).hasSize(2).extracting("memberId").contains("test");
 	}
 
 
 	@Test
 	@Transactional
 	public void 멤버_휴먼처리(){
-		memberRepository.save(newMember);
-		entityManager.persist(newMember);
+		memberRepository.save(Member.createMember("test","test", "1", "test@email", true, true));
 	    // given
-		Optional<Member> byId = memberRepository.findByMemberId(newMember.getMemberId());
+		Optional<Member> byId = memberRepository.findByMemberId("test");
 		// when
 		byId.get().changeDormantMember(true);
 		memberRepository.save(byId.get());
@@ -80,9 +72,9 @@ class MemberTest {
 	@Test
 	@Transactional
 	public void 멤버_휴먼처리_해제(){
-		memberRepository.save(newMember);
+		memberRepository.save(Member.createMember("test","test", "1", "test@email", true, true));
 		// given
-		Optional<Member> byId = memberRepository.findByMemberId(newMember.getMemberId());
+		Optional<Member> byId = memberRepository.findByMemberId("test");
 		// when
 		byId.get().changeDormantMember(false);
 		memberRepository.save(byId.get());
