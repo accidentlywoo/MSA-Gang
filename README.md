@@ -70,7 +70,7 @@
 
 - MSA 스럽게 Node.js 서버 하나....
 
-### 프로젝트 모듈로 잡아야될 폴더
+### 프로젝트 모듈로 잡아야될 폴더 feat. gradle
 
 - discoveryserver
 - gateway
@@ -78,12 +78,23 @@
 - order
 - oderProcess
 
+#### Run 순서
+discoveryserver > gateway > services
+
 ### 추가 사항
 1. YAML 파일 공개하지 않습니다.
 
 보안문제로, .yml 파일 공개하지 않습니다.
 
 따로 정리해서, 문서화한 뒤 공유하겠습니다.
+
+- [YAML 정리파일 위치](./Deployment/README.md)
+
+2. Data Script
+
+DDL, DML 등 스크립트를 돌려주세요~ 호도리~
+
+- [DB Scripts](./DataBase/README.md)
 
 ## Data Base (v1)
 ![MySQL InnoDB](https://img.shields.io/badge/MySQL-8.0.23-61DAFB?Style=flat&logo=MySQL&logoColor=61DAFB)

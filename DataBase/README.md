@@ -1,0 +1,3 @@
+# DataBase Scripts
+- DDL
+- DML
