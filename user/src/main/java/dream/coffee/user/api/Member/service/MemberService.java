@@ -29,7 +29,9 @@ public class MemberService {
 	public Long SignUp(SignUpReqDto signUpReqDto){
 		Optional<Member> byMemberId = memberRepository.findByMemberId(signUpReqDto.getId());
 		// TODO :: Exception Handling
-		if (byMemberId.isPresent()) throw new IllegalArgumentException("이미 존재하는 아이디 입니다.");
+		if (byMemberId.isPresent()) {
+			throw new IllegalArgumentException("이미 존재하는 아이디 입니다.");
+		}
 
 		Member newMember = Member.createMember(
 				signUpReqDto.getId(),
@@ -51,7 +53,9 @@ public class MemberService {
 	 */
 	public MemberInfoDto aMemberInfo(String memberId){
 		Optional<Member> findMemberById = memberRepository.findByMemberId(memberId);
-		if (findMemberById.isEmpty()) throw new IllegalArgumentException("존재하지 않은 아이디 입니다.");
+		if (findMemberById.isEmpty()) {
+			throw new IllegalArgumentException("존재하지 않은 아이디 입니다.");
+		}
 
 		return MemberInfoDto
 				.builder()
@@ -73,7 +77,9 @@ public class MemberService {
 
 		Optional<Member> byMemberId = memberRepository.findByMemberId(reqDto.getId());
 
-		if (byMemberId.isEmpty()) throw new IllegalArgumentException("존재하지 않은 아이디 입니다.");
+		if (byMemberId.isEmpty()){
+			throw new IllegalArgumentException("존재하지 않은 아이디 입니다.");
+		}
 
 		Member updatedMemberInfo = byMemberId.get().changeMemberInfo(reqDto.getName(), reqDto.getEmail(), reqDto.getIsUseMarketing());
 

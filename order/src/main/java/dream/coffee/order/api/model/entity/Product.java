@@ -27,8 +27,9 @@ public class Product {
 	protected Product(){}
 
 	public Product calculateStock(int orderNumberOfProduct){
-		if(currentStock < orderNumberOfProduct)
+		if(currentStock < orderNumberOfProduct) {
 			throw new IllegalArgumentException("주문 수량을 초과하였습니다.");
+		}
 		currentStock = currentStock - orderNumberOfProduct;
 		return this;
 	}

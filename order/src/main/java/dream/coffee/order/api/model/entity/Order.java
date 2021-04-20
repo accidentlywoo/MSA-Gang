@@ -83,8 +83,9 @@ public class Order {
 	 * @return
 	 */
 	public Order settingOrderItem(List<OrderItem> orderItems){
-		if(this.orderCode == null)
+		if(this.orderCode == null) {
 			throw new IllegalArgumentException("주문 코드가 생성되지 않았습니다.");
+		}
 		for(OrderItem item : orderItems){
 			orderItems.add(item);
 			item.setOrderInfo(this);
@@ -99,8 +100,9 @@ public class Order {
 	 * @return
 	 */
 	public Order createPaymentInfo(Payment aPayment){
-		if(this.orderItems.size() < 1)
+		if(this.orderItems.size() < 1) {
 			throw new IllegalArgumentException("주문 상품 정보가 없습니다.");
+		}
 		for(OrderItem item : this.orderItems){
 			this.totalPrice += item.getTotalprice();
 		}
@@ -118,8 +120,9 @@ public class Order {
 	 * @return
 	 */
 	public String changeOrderStatus(OrderStatus status){
-		if(this.payment == null || !this.payment.isApproval())
-			throw  new IllegalArgumentException("결제 정보 확인이 필요합니다.");
+		if(this.payment == null || !this.payment.isApproval()) {
+			throw new IllegalArgumentException("결제 정보 확인이 필요합니다.");
+		}
 		this.status = status;
 		return this.orderCode;
 	}
