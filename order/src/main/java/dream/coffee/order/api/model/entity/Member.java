@@ -13,7 +13,6 @@ import java.util.List;
 @Getter
 public class Member {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String memberId;
 	private String memberName;
