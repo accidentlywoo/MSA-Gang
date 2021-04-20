@@ -91,7 +91,7 @@ jdbc:h2:tcp://localhost/{프로젝트 경로}/MSA/DataBase/coffee
 
 - 실행 데이터 베이스 : MySql (v1)
 
-개인프로젝트이다보니. 서비스 별로 DB구축하기는......TODO.
+개인프로젝트이다보니. 서비스 별로 DB구축하기는......TODO. :heart:
 
 ./DataBase 파일경로에서 DDL -> DML 순서로 파일 돌려주세요.
 
@@ -107,12 +107,24 @@ jdbc:h2:tcp://localhost/{프로젝트 경로}/MSA/DataBase/coffee
 
 - DDD (Domain Driven Development) : 도메인 주도 개발
 
-- GitHub Flow
+feat. GitHub Flow
 개인 프로젝트이다보니, 어느정도 구성 한 뒤 고려할 계획입니다. 
   
 관리 포인트가 지저분한것을 싫어하기 때문에, Github Flow를 사용할 계정입니다.
 
-Github Action으로 CI/CD 툴 개발할 계획입니다.ㅎ
+Github Action으로 CI/CD 툴 개발할 계획입니다.
+
+- CI를 위한 자동화 플로우 구성
+1. 코드 저장소
+    : GitHub
+   
+2. 정적 분석
+    : TODO FindBugs 추가할 계획
+    : Checkstyle 적용 계획(Google Java Style)
+    : IntelliJ Code Coverage
+   
+3. 테스트 / 스테이징 환경에 패키징 및 배포  
+    : 갠 플젝이라 생략합니다..
 
 ## Commit message Convention
 ```
@@ -151,3 +163,6 @@ JUnit5 와 서드파티 라이브러리인 AssertJ를 활용해 테스트 가독
 ### Spring Cloud Gateway Life Cycle!
 
 Gateway Client > Gateway Handler > Global Filter > Custom filter > Logging Filter > Proxied Service
+
+## 참고 사이트
+-[RedHat CI 일반적인 프로세스](https://developers.redhat.com/blog/2017/09/06/continuous-integration-a-typical-process/)
