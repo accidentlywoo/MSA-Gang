@@ -22,6 +22,12 @@ public class FilterConfig {
 						)
 						.uri("http://localhost:8082/")
 				)
+				.route(r -> r.path("/order-process/**")
+						.filters(f -> f.addRequestHeader("order-process-request", "order-process-request-header")
+								.addResponseHeader("order-process-response", "order-process-response-header")
+						)
+						.uri("http://localhost:8083/")
+				)
 				.build();
 
 	}
