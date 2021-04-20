@@ -16,9 +16,6 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
 	void deleteAllInBatch();
 
 	@Deprecated
-	<S extends Member> S save(S entity);
-
-	@Deprecated
 	void deleteById(Long aLong);
 
 	@Deprecated
