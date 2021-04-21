@@ -211,10 +211,10 @@ Gateway Client > Gateway Handler > Global Filter > Custom filter > Logging Filte
 3. cli gradle JVM Argument 떼려 넣어버리기
     - ```서비스/gradlew bootRun -Dspring-boot.run.jvmArguments='-Dserver.port=~65535'```
     
-4. cli 빌드 및 jar 실행
+4. cli gradle 빌드 및 jar 실행
     - ```서비스/gradlew build``` : 테스트코드 실패하면 빌드안됨.
     - ```서비스/gradlew bootJar```
-    - ```java -jar -Dserver.port=8080 (기본설정)서비스/build/libs/~-SNAPSHOT.jar```
+    - ```java -jar -Dserver.port=~65535 (기본설정)서비스/build/libs/~-SNAPSHOT.jar```
    
 
 ## 참고 사이트
