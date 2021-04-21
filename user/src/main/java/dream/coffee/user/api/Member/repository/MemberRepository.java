@@ -1,6 +1,10 @@
 package dream.coffee.user.api.Member.repository;
 
 import dream.coffee.user.api.model.entity.Member;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
@@ -26,4 +30,25 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
 
 	@Deprecated
 	void deleteAll();
+
+	@Deprecated
+	List<Member> findAll();
+
+	@Deprecated
+	List<Member> findAll(Sort sort);
+
+	@Deprecated
+	<S extends Member> List<S> findAll(Example<S> example);
+
+	@Deprecated
+	<S extends Member> List<S> findAll(Example<S> example, Sort sort);
+
+	@Deprecated
+	Page<Member> findAll(Pageable pageable);
+
+	@Deprecated
+	<S extends Member> Page<S> findAll(Example<S> example, Pageable pageable);
+
+	@Deprecated
+	<S extends Member> long count(Example<S> example);
 }
