@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 
 @Slf4j
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/")
 public class LivenessController {
 	Environment env;
 
