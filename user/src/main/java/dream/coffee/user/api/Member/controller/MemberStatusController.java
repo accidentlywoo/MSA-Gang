@@ -2,6 +2,7 @@ package dream.coffee.user.api.Member.controller;
 
 import dream.coffee.user.api.Member.model.dto.MemberInfoDto;
 import dream.coffee.user.api.Member.model.dto.SignInReqDto;
+import dream.coffee.user.api.Member.model.dto.SignUpReqDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Description;
@@ -15,6 +16,11 @@ import javax.validation.Valid;
 @RequiredArgsConstructor
 @RestController
 public class MemberStatusController {
+	@PostMapping("/signUp")
+	public MemberInfoDto signUp(@Valid @RequestBody SignUpReqDto reqDto){
+		return null;
+	}
+
 	@PostMapping("/signIn")
 	public MemberInfoDto signIn(@Valid @RequestBody SignInReqDto reqDto){
 		return null;
