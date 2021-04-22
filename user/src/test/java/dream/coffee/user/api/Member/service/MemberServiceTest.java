@@ -1,10 +1,10 @@
 package dream.coffee.user.api.Member.service;
 
-import dream.coffee.user.api.Member.repository.MemberRepository;
+import dream.coffee.user.api.Member.model.dto.MemberInfoChangeReqDto;
+import dream.coffee.user.api.Member.model.dto.MemberInfoDto;
+import dream.coffee.user.api.Member.model.dto.SignUpReqDto;
+import dream.coffee.user.api.repository.MemberRepository;
 import dream.coffee.user.UserApplicationTests;
-import dream.coffee.user.api.model.dto.MemberInfoChangeReqDto;
-import dream.coffee.user.api.model.dto.MemberInfoDto;
-import dream.coffee.user.api.model.dto.SignUpReqDto;
 import dream.coffee.user.api.model.entity.Member;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
