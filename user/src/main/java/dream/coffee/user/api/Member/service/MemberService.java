@@ -1,12 +1,11 @@
 package dream.coffee.user.api.Member.service;
 
+import dream.coffee.user.api.Member.model.dto.MemberInfoChangeReqDto;
+import dream.coffee.user.api.Member.model.dto.MemberInfoDto;
+import dream.coffee.user.api.Member.model.dto.SignUpReqDto;
 import dream.coffee.user.api.Member.repository.MemberRepository;
-import dream.coffee.user.api.model.dto.MemberInfoChangeReqDto;
-import dream.coffee.user.api.model.dto.MemberInfoDto;
-import dream.coffee.user.api.model.dto.SignUpReqDto;
 import dream.coffee.user.api.model.entity.Member;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.log4j.Log4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

@@ -26,8 +26,8 @@ public class MemberStatusController {
 		return null;
 	}
 
-	@PostMapping("/signOut/{member_id}")
-	public MemberInfoDto signOut(@PathVariable(name = "member_id")String member_id){
+	@PostMapping("/signOut")
+	public MemberInfoDto signOut(){
 		return null;
 	}
 }

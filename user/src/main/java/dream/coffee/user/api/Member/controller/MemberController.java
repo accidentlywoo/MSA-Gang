@@ -1,5 +1,6 @@
 package dream.coffee.user.api.Member.controller;
 
+import dream.coffee.user.api.Member.model.dto.MemberInfoChangeReqDto;
 import dream.coffee.user.api.Member.model.dto.MemberInfoDto;
 import dream.coffee.user.api.Member.model.dto.SignUpReqDto;
 import lombok.RequiredArgsConstructor;
@@ -17,13 +18,13 @@ import javax.validation.Valid;
 @RestController
 public class MemberController {
 
-	@GetMapping("/{member_id}")
-	public MemberInfoDto getAMemberInfo(@PathVariable(name = "member_id")String member_id){
+	@GetMapping("/")
+	public MemberInfoDto getAMemberInfo(){
 		return null;
 	}
 
-	@PostMapping("/{member_id}")
-	public MemberInfoDto changeAMemberInfo(@PathVariable(name = "member_id")String member_id){
+	@PostMapping("/")
+	public MemberInfoDto changeAMemberInfo(@Valid @RequestBody MemberInfoChangeReqDto reqDto){
 		return null;
 	}
 
