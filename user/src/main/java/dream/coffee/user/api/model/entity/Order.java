@@ -19,9 +19,9 @@ public class Order {
 	@Id
 	@Column(name = "order_id")
 	private Long id;
-
+	@Column(nullable = false, unique = true)
 	private String orderCode;
-
+	@Column(nullable = false)
 	private int totalPrice;
 
 	@Enumerated(EnumType.STRING)

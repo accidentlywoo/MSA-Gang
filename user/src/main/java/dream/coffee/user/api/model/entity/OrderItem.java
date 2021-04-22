@@ -25,8 +25,10 @@ public class OrderItem {
 	@JoinColumn(name = "product_code")
 	private Product product;
 
+	@Column(nullable = false)
 	private int totalprice;
 
+	@Column(nullable = false)
 	private int numberOfProduct;
 
 	@Embedded

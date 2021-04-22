@@ -15,9 +15,13 @@ public class Member {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@Column(nullable = false, length = 20, unique = true)
 	private String memberId;
+	@Column(nullable = false, length = 20)
 	private String memberName;
+	@Column(nullable = false)
 	private String password;
+	@Column(nullable = false)
 	private String email;
 	private boolean useMarketing;
 	private boolean isCertification;

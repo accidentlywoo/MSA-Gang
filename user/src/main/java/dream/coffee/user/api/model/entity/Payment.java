@@ -14,12 +14,14 @@ public class Payment {
 	@OneToOne(mappedBy = "payment")
 	private Order order;
 
+	@Column(nullable = false)
 	private String paymentMethod;
-	
+
+	@Column(nullable = false)
 	private int amountOfPayment;
 
-	// 승인여부
-	private boolean isApproval;
+	@Column(nullable = false)
+	private boolean isApproval;// 승인여부
 
 	@Embedded
 	private BaseEntity baseEntity;
