@@ -8,6 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 @Service
-public class SigninService {
+public class MemberStatusService {
 
 }
