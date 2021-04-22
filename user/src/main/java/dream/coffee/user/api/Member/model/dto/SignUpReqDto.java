@@ -1,16 +1,17 @@
-package dream.coffee.user.api.model.dto;
+package dream.coffee.user.api.Member.model.dto;
 
 import lombok.Builder;
 import lombok.Data;
 
 import javax.validation.constraints.NotNull;
-import java.time.LocalDateTime;
 
 @Data
 @Builder
-public class MemberInfoDto {
+public class SignUpReqDto {
 	@NotNull
 	private String id;
+	@NotNull
+	private String pwd;
 	@NotNull
 	private String name;
 	@NotNull
@@ -19,6 +20,4 @@ public class MemberInfoDto {
 	private boolean isUseMarketing;
 	@NotNull
 	private boolean isCertifivation;
-	@NotNull
-	private LocalDateTime joinedDate;
 }

@@ -1,10 +1,9 @@
-package dream.coffee.user.api.model.dto;
+package dream.coffee.user.api.Member.model.dto;
 
 import lombok.Builder;
 import lombok.Data;
 
 import javax.validation.constraints.NotNull;
-import java.time.LocalDateTime;
 
 @Data
 @Builder
