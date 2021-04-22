@@ -1,6 +1,5 @@
-package dream.coffee.user.api.Member.repository;
+package dream.coffee.user.api.repository;
 
-import dream.coffee.user.api.model.entity.Payment;
 import dream.coffee.user.api.model.entity.Payment;
 import org.springframework.data.jpa.repository.JpaRepository;
 
