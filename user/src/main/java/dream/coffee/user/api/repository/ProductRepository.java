@@ -1,9 +1,7 @@
-package dream.coffee.user.api.User.repository;
+package dream.coffee.user.api.repository;
 
 import dream.coffee.user.api.model.entity.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import java.util.List;
 
 public interface ProductRepository extends JpaRepository<Product, Long> {
 

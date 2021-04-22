@@ -1,4 +1,4 @@
-package dream.coffee.user.api.Member.repository;
+package dream.coffee.user.api.repository;
 
 import dream.coffee.user.api.model.entity.Member;
 import org.springframework.data.domain.Example;
