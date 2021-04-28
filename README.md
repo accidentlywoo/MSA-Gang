@@ -219,3 +219,4 @@ Gateway Client > Gateway Handler > Global Filter > Custom filter > Logging Filte
 
 ## 참고 사이트
 -[RedHat CI 일반적인 프로세스](https://developers.redhat.com/blog/2017/09/06/continuous-integration-a-typical-process/)
+-[Best Practice DDD(feat. Microsoft)](https://docs.microsoft.com/ko-kr/archive/msdn-magazine/2009/february/best-practice-an-introduction-to-domain-driven-design)
