@@ -16,9 +16,9 @@ public class MemberInfoDto {
 	@NotNull
 	private String email;
 	@NotNull
-	private boolean isUseMarketing;
+	private Boolean isUseMarketing;
 	@NotNull
-	private boolean isCertifivation;
+	private Boolean isCertifivation;
 	@NotNull
 	private LocalDateTime joinedDate;
 }

@@ -28,8 +28,8 @@ public class SignUpReqDto {
 	private String email;
 
 	@NotNull
-	private boolean isUseMarketing;
+	private Boolean isUseMarketing;
 
 	@NotNull
-	private boolean isCertifivation;
+	private Boolean isCertifivation;
 }
