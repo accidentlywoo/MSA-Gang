@@ -37,8 +37,8 @@ public class MemberService {
 				signUpReqDto.getName(),
 				signUpReqDto.getPwd(),
 				signUpReqDto.getEmail(),
-				signUpReqDto.isUseMarketing(),
-				signUpReqDto.isCertifivation()
+				signUpReqDto.getIsUseMarketing(),
+				signUpReqDto.getIsCertifivation()
 		);
 		memberRepository.save(newMember);
 		return newMember.getId();

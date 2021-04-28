@@ -165,9 +165,9 @@ class MemberServiceTest extends UserApplicationTests {
 		// when
 		MemberInfoDto changedMemberInfo = memberService.changeAMemberInfo(changeUseMarketingReq);
 		// than
-		assertThat(changedMemberInfo.isUseMarketing())
+		assertThat(changedMemberInfo.getIsUseMarketing())
 				.isNotNull()
-				.as("Check Changed isUseMarketing = %s ", changedMemberInfo.isUseMarketing())
+				.as("Check Changed isUseMarketing = %s ", changedMemberInfo.getIsUseMarketing())
 				.isEqualTo(false);
 	}
 
