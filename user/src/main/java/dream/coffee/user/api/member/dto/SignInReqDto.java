@@ -1,4 +1,4 @@
-package dream.coffee.user.api.member.model.dto;
+package dream.coffee.user.api.member.dto;
 
 import lombok.Builder;
 import lombok.Data;

@@ -1,8 +1,8 @@
 package dream.coffee.user.api.member.service;
 
-import dream.coffee.user.api.member.model.dto.InfoChangeReqDto;
-import dream.coffee.user.api.member.model.dto.InfoDto;
-import dream.coffee.user.api.member.model.dto.SignUpReqDto;
+import dream.coffee.user.api.member.dto.InfoChangeReqDto;
+import dream.coffee.user.api.member.dto.InfoDto;
+import dream.coffee.user.api.member.dto.SignUpReqDto;
 import dream.coffee.user.api.repository.MemberRepository;
 import dream.coffee.user.UserApplicationTests;
 import dream.coffee.user.api.model.entity.Member;

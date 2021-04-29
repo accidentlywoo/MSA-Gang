@@ -1,6 +1,6 @@
 package dream.coffee.user.api.user.controller;
 
-import dream.coffee.user.api.member.model.dto.InfoChangeReqDto;
+import dream.coffee.user.api.member.dto.InfoChangeReqDto;
 import dream.coffee.user.api.user.model.dto.MemberInfoDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

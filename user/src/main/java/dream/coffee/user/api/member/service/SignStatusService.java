@@ -1,6 +1,6 @@
 package dream.coffee.user.api.member.service;
 
-import dream.coffee.user.api.member.model.dto.SignUpReqDto;
+import dream.coffee.user.api.member.dto.SignUpReqDto;
 import dream.coffee.user.api.model.entity.Member;
 import dream.coffee.user.api.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
