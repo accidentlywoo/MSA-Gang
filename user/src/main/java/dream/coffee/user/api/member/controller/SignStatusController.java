@@ -1,9 +1,9 @@
 package dream.coffee.user.api.member.controller;
 
-import dream.coffee.user.api.member.model.dto.MemberInfoDto;
+import dream.coffee.user.api.member.model.dto.InfoDto;
 import dream.coffee.user.api.member.model.dto.SignInReqDto;
 import dream.coffee.user.api.member.model.dto.SignUpReqDto;
-import dream.coffee.user.api.member.service.MemberService;
+import dream.coffee.user.api.member.service.InfomationService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Description;
@@ -16,8 +16,8 @@ import javax.validation.Valid;
 @Description("대고객 서비스. 한명의 클라이언트 (사인인)상태 도메인.")
 @RequiredArgsConstructor
 @RestController
-public class MemberStatusController {
-	private final MemberService memberService;
+public class SignStatusController {
+	private final InfomationService memberService;
 
 	@PostMapping("/signUp")
 	public Long signUp(@Valid @RequestBody SignUpReqDto reqDto){
@@ -25,12 +25,12 @@ public class MemberStatusController {
 	}
 
 	@PostMapping("/signIn")
-	public MemberInfoDto signIn(@Valid @RequestBody SignInReqDto reqDto){
+	public InfoDto signIn(@Valid @RequestBody SignInReqDto reqDto){
 		return null;
 	}
 
 	@PostMapping("/signOut")
-	public MemberInfoDto signOut(){
+	public InfoDto signOut(){
 		return null;
 	}
 }

@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 @Data
 @Builder
-public class MemberInfoDto {
+public class InfoDto {
 	@NotNull
 	private String id;
 	@NotNull

@@ -1,7 +1,7 @@
 package dream.coffee.user.api.member.service;
 
-import dream.coffee.user.api.member.model.dto.MemberInfoChangeReqDto;
-import dream.coffee.user.api.member.model.dto.MemberInfoDto;
+import dream.coffee.user.api.member.model.dto.InfoChangeReqDto;
+import dream.coffee.user.api.member.model.dto.InfoDto;
 import dream.coffee.user.api.member.model.dto.SignUpReqDto;
 import dream.coffee.user.api.repository.MemberRepository;
 import dream.coffee.user.api.model.entity.Member;
@@ -15,7 +15,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 @Service
-public class MemberService {
+public class InfomationService {
 	private final MemberRepository memberRepository;
 
 	/**
@@ -50,13 +50,13 @@ public class MemberService {
 	 * @param memberId
 	 * @return
 	 */
-	public MemberInfoDto aMemberInfo(String memberId){
+	public InfoDto aMemberInfo(String memberId){
 		Optional<Member> findMemberById = memberRepository.findByMemberId(memberId);
 		if (findMemberById.isEmpty()) {
 			throw new IllegalArgumentException("존재하지 않은 아이디 입니다.");
 		}
 
-		return MemberInfoDto
+		return InfoDto
 				.builder()
 					.id(findMemberById.get().getMemberId())
 					.name(findMemberById.get().getMemberName())
@@ -72,7 +72,7 @@ public class MemberService {
 	 *
 	 * @return
 	 */
-	public MemberInfoDto changeAMemberInfo(MemberInfoChangeReqDto reqDto){
+	public InfoDto changeAMemberInfo(InfoChangeReqDto reqDto){
 
 		Optional<Member> byMemberId = memberRepository.findByMemberId(reqDto.getId());
 
@@ -84,7 +84,7 @@ public class MemberService {
 
 		memberRepository.save(updatedMemberInfo);
 
-		return MemberInfoDto
+		return InfoDto
 				.builder()
 					.id(updatedMemberInfo.getMemberId())
 					.name(updatedMemberInfo.getMemberName())

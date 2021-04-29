@@ -15,7 +15,7 @@ import java.util.List;
 @Description("대고객 서비스. 한명의 클라이언트에대한 주문정보 조회 도메인.")
 @RequiredArgsConstructor
 @RestController
-public class OrderController {
+public class OrderViewController {
 
 	@GetMapping("/order")
 	public Object findAOrder(){

@@ -1,7 +1,7 @@
 package dream.coffee.user.api.member.service;
 
-import dream.coffee.user.api.member.model.dto.MemberInfoChangeReqDto;
-import dream.coffee.user.api.member.model.dto.MemberInfoDto;
+import dream.coffee.user.api.member.model.dto.InfoChangeReqDto;
+import dream.coffee.user.api.member.model.dto.InfoDto;
 import dream.coffee.user.api.member.model.dto.SignUpReqDto;
 import dream.coffee.user.api.repository.MemberRepository;
 import dream.coffee.user.UserApplicationTests;
@@ -18,10 +18,10 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.Assertions.*;
 
 @Transactional(readOnly = true)
-@DisplayName("MemberService Unit Test")
+@DisplayName("InfomationService Unit Test")
 class MemberServiceTest extends UserApplicationTests {
 
-	@Autowired private MemberService memberService;
+	@Autowired private InfomationService memberService;
 
 	@Autowired private MemberRepository memberRepository;
 
@@ -82,7 +82,7 @@ class MemberServiceTest extends UserApplicationTests {
 		// given
 		String alreadyExistMemberId = "alreadyExist";
 		// when
-		MemberInfoDto aMemberInfo = memberService.aMemberInfo(alreadyExistMemberId);
+		InfoDto aMemberInfo = memberService.aMemberInfo(alreadyExistMemberId);
 		// than
 		assertThat(aMemberInfo)
 				.isNotNull()
@@ -115,13 +115,13 @@ class MemberServiceTest extends UserApplicationTests {
 	public void 회원_정보_이름_변경(){
 		// given
 		String fixture = "changeName";
-		MemberInfoChangeReqDto changeNameReq = MemberInfoChangeReqDto
+		InfoChangeReqDto changeNameReq = InfoChangeReqDto
 			.builder()
 				.id("alreadyExist")
 				.name(fixture)
 			.build();
 		// when
-		MemberInfoDto changedMemberInfo = memberService.changeAMemberInfo(changeNameReq);
+		InfoDto changedMemberInfo = memberService.changeAMemberInfo(changeNameReq);
 		// than
 		assertThat(changedMemberInfo.getName())
 				.isNotNull()
@@ -136,14 +136,14 @@ class MemberServiceTest extends UserApplicationTests {
 	public void 회원_정보_이메일_변경(){
 		// given
 		String fixture = "change@email.com";
-		MemberInfoChangeReqDto changeEmailReq = MemberInfoChangeReqDto
+		InfoChangeReqDto changeEmailReq = InfoChangeReqDto
 			.builder()
 				.id("alreadyExist")
 				.email(fixture)
 			.build();
 
 		// when
-		MemberInfoDto changedMemberInfo = memberService.changeAMemberInfo(changeEmailReq);
+		InfoDto changedMemberInfo = memberService.changeAMemberInfo(changeEmailReq);
 		// than
 		assertThat(changedMemberInfo.getEmail())
 				.isNotNull()
@@ -157,13 +157,13 @@ class MemberServiceTest extends UserApplicationTests {
 	@DisplayName("GREEN 회원정보 변경 :: 마케팅수신여부")
 	public void 회원_정보_마케팅수신여_변경(){
 		// given
-		MemberInfoChangeReqDto changeUseMarketingReq = MemberInfoChangeReqDto
+		InfoChangeReqDto changeUseMarketingReq = InfoChangeReqDto
 			.builder()
 				.id("alreadyExist")
 				.isUseMarketing(Boolean.FALSE)
 			.build();
 		// when
-		MemberInfoDto changedMemberInfo = memberService.changeAMemberInfo(changeUseMarketingReq);
+		InfoDto changedMemberInfo = memberService.changeAMemberInfo(changeUseMarketingReq);
 		// than
 		assertThat(changedMemberInfo.getIsUseMarketing())
 				.isNotNull()
