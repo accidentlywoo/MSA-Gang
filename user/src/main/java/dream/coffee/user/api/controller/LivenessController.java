@@ -1,12 +1,9 @@
 package dream.coffee.user.api.controller;
 
-import dream.coffee.user.configuration.Greeting;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.log4j.Log4j;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,9 +16,15 @@ import javax.servlet.http.HttpServletRequest;
 @RestController
 @RequestMapping("/")
 public class LivenessController {
-	final Environment env;
+	private Environment env;
 
-	private final Greeting greeting;
+//	private Greeting greeting;
+
+	@Autowired
+	public LivenessController(Environment env) {
+//		this.greeting = greeting;
+		this.env = env;
+	}
 
 	@GetMapping("/live")
 	public String liveness(){
@@ -41,9 +44,4 @@ public class LivenessController {
 				,env.getProperty("local.server.port"));
 	}
 
-	@GetMapping("/welcome")
-	public String welcome(){
-//		return env.getProperty("greeting.message");
-		return greeting.getMessage();
-	}
 }

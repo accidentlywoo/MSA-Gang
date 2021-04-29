@@ -25,56 +25,7 @@ class MemberServiceTest extends UserApplicationTests {
 
 	@Autowired private MemberRepository memberRepository;
 
-	@Transactional
-	@Rollback(value = true)
-	@Test
-	@DisplayName("GREEN 회원가입")
-	public void 회원_가입_성공(){
-	    // given
-		SignUpReqDto newMember = SignUpReqDto.builder()
-									.id("test")
-									.pwd("test")
-									.name("test")
-									.email("test")
-									.isCertifivation(true)
-									.isUseMarketing(true)
-								.build();
-		// when
-		Long newMemberId = memberService.SignUp(newMember);
 
-		// than
-		Optional<Member> findAMember = memberRepository.findById(newMemberId);
-
-		assertNotNull(findAMember.get());
-
-		assertThat(findAMember.get().getMemberId()).isEqualTo("test");
-
-		assertThat(newMemberId).isEqualByComparingTo(findAMember.get().getId());
-	}
-
-	@Transactional
-	@Rollback(value = true)
-	@Test
-	@DisplayName("RED 회원가입")
-	public void 회원_가입_중복아이디(){
-		// given
-		SignUpReqDto alreadyExistMember = SignUpReqDto.builder()
-												.id("alreadyExist")
-												.pwd("alreadyExist")
-												.name("test")
-												.email("test@email.com")
-												.isCertifivation(true)
-												.isUseMarketing(true)
-											.build();
-		// when
-		assertThatThrownBy(
-					() -> {memberService.SignUp(alreadyExistMember);}
-				)
-				.isInstanceOf(IllegalArgumentException.class)
-				.hasMessageContaining("이미 존재하는 아이디 입니다.");
-		// than
-
-	}
 
 	@Test
 	@DisplayName("GREEN 회원 정보조회")
