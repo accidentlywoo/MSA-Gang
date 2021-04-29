@@ -4,6 +4,7 @@ import dream.coffee.user.api.member.dto.InfoDto;
 import dream.coffee.user.api.member.dto.SignInReqDto;
 import dream.coffee.user.api.member.dto.SignUpReqDto;
 import dream.coffee.user.api.member.service.InfomationService;
+import dream.coffee.user.api.member.service.SignStatusService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Description;
@@ -12,6 +13,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Slf4j
 @RequestMapping("/member")
@@ -19,7 +22,7 @@ import javax.validation.Valid;
 @RequiredArgsConstructor
 @RestController
 public class SignStatusController {
-	private final InfomationService memberService;
+	private final SignStatusService signStatusService;
 
 	/**
 	 * 회원가입 컨트롤러
@@ -28,18 +31,19 @@ public class SignStatusController {
 	 * @param reqDto
 	 * @return
 	 */
-	@PostMapping("/signUp")
+	@PostMapping("/sign-up")
 	public ResponseEntity<Long> signUp(@Valid @RequestBody SignUpReqDto reqDto){
-		return new ResponseEntity<Long>(memberService.SignUp(reqDto), HttpStatus.CREATED);
+		return new ResponseEntity<Long>(signStatusService.signUp(reqDto), HttpStatus.CREATED);
 	}
 
-	@PostMapping("/signIn")
-	public InfoDto signIn(@Valid @RequestBody SignInReqDto reqDto){
-		return null;
+	@PostMapping("/sign-in")
+	public ResponseEntity<InfoDto> signIn(@Valid @RequestBody SignInReqDto reqDto){
+		return ResponseEntity.status(HttpStatus.OK).body(signStatusService.signIn(reqDto));
 	}
 
-	@PostMapping("/signOut")
-	public InfoDto signOut(){
-		return null;
+	@PostMapping("/sign-out/{id}")
+	public ResponseEntity<Void> signOut(@PathVariable("id") @NotBlank @Size(min = 5, max = 20) String id){
+		signStatusService.signOut(id);
+		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
 	}
 }

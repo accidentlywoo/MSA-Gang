@@ -1,8 +1,12 @@
 package dream.coffee.user.api.member.controller;
 
+import dream.coffee.user.api.member.dto.OrderDto;
+import dream.coffee.user.api.member.service.OrderViewer;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Description;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,19 +20,15 @@ import java.util.List;
 @RequiredArgsConstructor
 @RestController
 public class OrderViewController {
-
-	@GetMapping("/order")
-	public Object findAOrder(){
-		return null;
-	}
+	private final OrderViewer orderViewer;
 
 	@GetMapping("/orders")
-	public List<Object> findOrders(){
-		return null;
+	public ResponseEntity<List<OrderDto>> findOrders(){
+		return ResponseEntity.status(HttpStatus.OK).body(orderViewer.getOrderList());
 	}
 
-	@GetMapping("/orders/{order_code}")
-	public Object findAOrder(@PathVariable(name = "order_code")String order_code){
-		return null;
+	@GetMapping("/orders/{order-code}")
+	public ResponseEntity<OrderDto> findAOrder(@PathVariable(name = "order-code")String orderCode){
+		return ResponseEntity.status(HttpStatus.OK).body(orderViewer.getAOrder(orderCode));
 	}
 }
