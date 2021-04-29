@@ -1,7 +1,7 @@
 package dream.coffee.user.api.member.controller;
 
-import dream.coffee.user.api.member.model.dto.MemberInfoChangeReqDto;
-import dream.coffee.user.api.member.model.dto.MemberInfoDto;
+import dream.coffee.user.api.member.model.dto.InfoChangeReqDto;
+import dream.coffee.user.api.member.model.dto.InfoDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Description;
@@ -15,15 +15,15 @@ import javax.validation.Valid;
 @Description("대고객 서비스. 한명의 클라이언트 정보 도메인.")
 @RequiredArgsConstructor
 @RestController
-public class MemberController {
+public class MemberInfoController {
 
 	@GetMapping("/")
-	public MemberInfoDto getAMemberInfo(){
+	public InfoDto getAMemberInfo(){
 		return null;
 	}
 
 	@PostMapping("/")
-	public MemberInfoDto changeAMemberInfo(@Valid @RequestBody MemberInfoChangeReqDto reqDto){
+	public InfoDto changeAMemberInfo(@Valid @RequestBody InfoChangeReqDto reqDto){
 		return null;
 	}
 
