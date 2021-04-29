@@ -1,5 +1,7 @@
 package dream.coffee.user.api.member.service;
 
+import dream.coffee.user.api.member.dto.InfoDto;
+import dream.coffee.user.api.member.dto.SignInReqDto;
 import dream.coffee.user.api.member.dto.SignUpReqDto;
 import dream.coffee.user.api.model.entity.Member;
 import dream.coffee.user.api.repository.MemberRepository;
@@ -22,7 +24,7 @@ public class SignStatusService {
 	 * @return
 	 */
 	@Transactional
-	public Long SignUp(SignUpReqDto signUpReqDto){
+	public Long signUp(SignUpReqDto signUpReqDto){
 		Optional<Member> byMemberId = memberRepository.findByMemberId(signUpReqDto.getId());
 		// TODO :: Exception Handling
 		if (byMemberId.isPresent()) {
@@ -39,5 +41,13 @@ public class SignStatusService {
 		);
 		memberRepository.save(newMember);
 		return newMember.getId();
+	}
+
+	public InfoDto signIn(SignInReqDto reqDto) {
+		return null;
+	}
+
+	public void signOut(String id) {
+
 	}
 }

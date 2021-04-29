@@ -19,32 +19,6 @@ public class InfomationService {
 	private final MemberRepository memberRepository;
 
 	/**
-	 * 회원 가입
-	 *
-	 * @param signUpReqDto
-	 * @return
-	 */
-	@Transactional
-	public Long SignUp(SignUpReqDto signUpReqDto){
-		Optional<Member> byMemberId = memberRepository.findByMemberId(signUpReqDto.getId());
-		// TODO :: Exception Handling
-		if (byMemberId.isPresent()) {
-			throw new IllegalArgumentException("이미 존재하는 아이디 입니다.");
-		}
-
-		Member newMember = Member.createMember(
-				signUpReqDto.getId(),
-				signUpReqDto.getName(),
-				signUpReqDto.getPwd(),
-				signUpReqDto.getEmail(),
-				signUpReqDto.getIsUseMarketing(),
-				signUpReqDto.getIsCertifivation()
-		);
-		memberRepository.save(newMember);
-		return newMember.getId();
-	}
-
-	/**
 	 * 회원 아이디로 정보 조회
 	 *
 	 * @param memberId
@@ -92,5 +66,9 @@ public class InfomationService {
 					.isCertifivation(updatedMemberInfo.isCertification())
 					.isUseMarketing(updatedMemberInfo.isUseMarketing())
 				.build();
+	}
+
+	public InfoDto getAMemberInfo(String id) {
+		return null;
 	}
 }
