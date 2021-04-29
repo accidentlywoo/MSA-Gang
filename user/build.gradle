@@ -14,6 +14,7 @@ repositories {
 
 ext {
 	set('springCloudVersion', "2020.0.2")
+	set('queryDSL','4.4.0')
 }
 
 configurations {
@@ -27,11 +28,15 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation "com.querydsl:querydsl-jpa:${queryDSL}"
 	compileOnly 'org.projectlombok:lombok'
 	compile 'com.h2database:h2'
 	runtimeOnly 'com.h2database:h2'
 	runtimeOnly 'mysql:mysql-connector-java'
 	annotationProcessor 'org.projectlombok:lombok'
+	annotationProcessor "com.querydsl:querydsl-apt:${queryDSL}:jpa"
+	annotationProcessor 'org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.2.Final'
+	annotationProcessor 'javax.annotation:javax.annotation-api:1.3.2'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
