@@ -57,45 +57,69 @@ public class Member extends BaseEntity{
 
 	public Member activeMember(){
 		this.active = false;
+
+		super.setUpdatedTime(LocalDateTime.now());
+
 		return this;
 	}
 
 	public Member inActiveMember(){
 		this.active = false;
+
+		super.setUpdatedTime(LocalDateTime.now());
+
 		return this;
 	}
 
 	public Member certificateMember(){
 		this.certification = true;
+
+		super.setUpdatedTime(LocalDateTime.now());
+
 		return this;
 	}
 
-	public Member inCertificateMember(){
+	public Member failCertificateMember(){
 		this.certification = false;
+
+		super.setUpdatedTime(LocalDateTime.now());
+
 		return this;
 	}
 
-	/**
-	 *  멤버 회원 정보 변경
-	 * 	  :: 회원이 자유롭게 변경할 수 있는 정보 : 이름, 이메일, 마케팅 수신 여부.
-	 *
-	 * @param name
-	 * @param email
-	 * @param isUseMarketing
-	 * @return
-	 */
-	public Member changeMemberInfo(String name, String email, Boolean isUseMarketing){
+	public Member changeMemberName(String name){
 		if(name != null){
-			name = name;
+			this.name = name;
 		}
-		if(email != null) {
+
+		super.setUpdatedTime(LocalDateTime.now());
+
+		return this;
+	}
+
+	public Member changeMemberEmail(String email){
+		if(email != null){
 			this.email = email;
 		}
-		if(isUseMarketing != null) {
-			useMarketing = isUseMarketing;
-		}
+
 		super.setUpdatedTime(LocalDateTime.now());
+
 		return this;
 	}
 
+	public Member useMarketing(){
+		useMarketing = true;
+
+		super.setUpdatedTime(LocalDateTime.now());
+
+		return this;
+	}
+
+	public Member notUseMarketing(){
+		useMarketing = false;
+
+		super.setUpdatedTime(LocalDateTime.now());
+
+		return this;
+	}
 }
