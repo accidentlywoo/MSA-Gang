@@ -15,12 +15,12 @@ import static javax.persistence.FetchType.LAZY;
 @Getter
 @Entity
 @Table(name = "orders")
-public class Order {
+public class Order extends BaseEntity{
 	@Id
 	@Column(name = "order_id")
 	private Long id;
 	@Column(nullable = false, unique = true)
-	private String orderCode;
+	private String code;
 	@Column(nullable = false)
 	private int totalPrice;
 
@@ -37,9 +37,6 @@ public class Order {
 
 	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
 	private List<OrderItem> orderItems;
-
-	@Embedded
-	private BaseEntity baseEntity;
 
 	protected Order(){}
 }
