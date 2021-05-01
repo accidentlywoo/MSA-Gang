@@ -6,7 +6,7 @@ import dream.coffee.user.api.model.entity.baseEntity.BaseEntity;
 import javax.persistence.*;
 
 @Entity
-public class Payment {
+public class Payment extends BaseEntity{
 	@Id
 	@Column(name = "payment_id")
 	private Long id;
@@ -15,14 +15,11 @@ public class Payment {
 	private Order order;
 
 	@Column(nullable = false)
-	private String paymentMethod;
+	private String method;
 
 	@Column(nullable = false)
 	private int amountOfPayment;
 
 	@Column(nullable = false)
 	private boolean isApproval;// 승인여부
-
-	@Embedded
-	private BaseEntity baseEntity;
 }

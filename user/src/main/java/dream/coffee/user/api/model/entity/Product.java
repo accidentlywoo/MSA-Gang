@@ -10,13 +10,13 @@ import javax.persistence.*;
  */
 @Getter
 @Entity
-public class Product {
+public class Product extends BaseEntity{
 	@Id
 	private Long id;
 	@Column(nullable = false, unique = true)
-	private String productCode;
+	private String code;
 	@Column(nullable = false)
-	private String productName;
+	private String name;
 	@Column(nullable = false)
 	private int price;
 	@Column(nullable = false)
@@ -26,9 +26,6 @@ public class Product {
 	 */
 	@Column(nullable = false)
 	private boolean isSale;
-
-	@Embedded
-	private BaseEntity baseEntity;
 
 	protected Product(){}
 }

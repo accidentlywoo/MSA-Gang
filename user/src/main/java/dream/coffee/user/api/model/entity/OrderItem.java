@@ -12,7 +12,7 @@ import static javax.persistence.FetchType.LAZY;
  */
 @Getter
 @Entity
-public class OrderItem {
+public class OrderItem extends BaseEntity {
 	@Id
 	@Column(name = "order_item_id")
 	private Long id;
@@ -30,9 +30,6 @@ public class OrderItem {
 
 	@Column(nullable = false)
 	private int numberOfProduct;
-
-	@Embedded
-	private BaseEntity baseEntity;
 
 	protected OrderItem(){}
 }
