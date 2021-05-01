@@ -11,23 +11,21 @@ import java.util.List;
 @Entity
 @ToString
 @Getter
-public class Member {
+public class Member extends BaseEntity{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@Column(nullable = false, length = 20, unique = true)
 	private String memberId;
 	@Column(nullable = false, length = 20)
-	private String memberName;
+	private String name;
 	@Column(nullable = false)
 	private String password;
 	@Column(nullable = false)
 	private String email;
 	private boolean useMarketing;
-	private boolean isCertification;
-	private boolean isDormant;
-	@Embedded
-	private BaseEntity baseEntity;
+	private boolean certification;
+	private boolean active;
 
 	@OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
 	private List<Order> orders;
@@ -36,12 +34,12 @@ public class Member {
 
 	private Member(String memberId,String memberName, String password, String email, boolean useMarketing, boolean isCertification) {
 		this.memberId = memberId;
-		this.memberName = memberName;
+		this.name = memberName;
 		this.password = password;
 		this.email = email;
 		this.useMarketing = useMarketing;
-		this.isCertification = isCertification;
-		this.isDormant = false;
+		this.certification = isCertification;
+		this.active = true;
 	}
 
 	/**
@@ -57,26 +55,24 @@ public class Member {
 		return new Member(memberId,memberName, password, email, useMarketing,isCertification);
 	}
 
-	/**
-	 * 멤버 휴면 처리
-	 *
-	 * @param isDormant
-	 * @return
-	 */
-	public Long changeDormantMember(boolean isDormant){
-		this.isDormant = isDormant;
-		return this.id;
+	public Member activeMember(){
+		this.active = false;
+		return this;
 	}
 
-	/**
-	 * 멤버 인증 처리
-	 *
-	 * @param isCertification
-	 * @return
-	 */
-	public Long changeMemberCertificate(boolean isCertification){
-		this.isCertification = isCertification;
-		return this.id;
+	public Member inActiveMember(){
+		this.active = false;
+		return this;
+	}
+
+	public Member certificateMember(){
+		this.certification = true;
+		return this;
+	}
+
+	public Member inCertificateMember(){
+		this.certification = false;
+		return this;
 	}
 
 	/**
@@ -90,7 +86,7 @@ public class Member {
 	 */
 	public Member changeMemberInfo(String name, String email, Boolean isUseMarketing){
 		if(name != null){
-			memberName = name;
+			name = name;
 		}
 		if(email != null) {
 			this.email = email;
@@ -98,7 +94,7 @@ public class Member {
 		if(isUseMarketing != null) {
 			useMarketing = isUseMarketing;
 		}
-		this.baseEntity.setUpdatedTime(LocalDateTime.now());
+		super.setUpdatedTime(LocalDateTime.now());
 		return this;
 	}
 
