@@ -30,7 +30,8 @@ public class MemberInfoController {
 
 	@PostMapping("/")
 	public ResponseEntity<InfoDto> changeAMemberInfo(@Valid @RequestBody InfoChangeReqDto reqDto){
-		return ResponseEntity.status(HttpStatus.RESET_CONTENT).body(infomationService.changeAMemberInfo(reqDto));
+//		return ResponseEntity.status(HttpStatus.RESET_CONTENT).body(infomationService.changeAMemberInfo(reqDto));
+		return null;
 	}
 
 }
