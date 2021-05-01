@@ -20,12 +20,6 @@ public class LivenessController {
 
 //	private Greeting greeting;
 
-	@Autowired
-	public LivenessController(Environment env) {
-//		this.greeting = greeting;
-		this.env = env;
-	}
-
 	@GetMapping("/live")
 	public String liveness(){
 		return "user service alive";
