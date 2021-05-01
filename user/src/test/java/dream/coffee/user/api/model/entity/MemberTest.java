@@ -6,77 +6,171 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(SpringExtension.class)
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 class MemberTest {
-
 	@Autowired
-	TestEntityManager entityManager;
-
-	@Autowired private MemberRepository memberRepository;
-
-	@Test
-	public void testEntityManager(){
-		assertNotNull(entityManager);
-	}
-
-	@Test
-	public void 멤버_저장_테스트(){
-		memberRepository.save(Member.createMember("test","test", "1", "test@email", true, true));
-		// when
-		Optional<Member> byId = memberRepository.findByMemberId("test");
-		// than
-		assertEquals("test", byId.get().getMemberId());
-	}
+	private MemberRepository memberRepository;
 
 	@Test
 	public void 조회_테스트(){
-		memberRepository.save(Member.createMember("test","test", "1", "test@email", true, true));
-		// when
-		List<Member> all = memberRepository.findAll();
+		// given
+		final Member member = 멤버_미인증_마케팅사용안함_픽스처();
 
-		Optional<Member> findById = memberRepository.findByMemberId("test");
-		// than
-		assertEquals(2, all.size());
-		assertNotNull(findById);
-		assertThat(all).hasSize(2).extracting("memberId").contains("test");
+		final Optional<Member> searchMember = memberRepository.findByMemberId(member.getMemberId());
+
+		assertThat(searchMember).isNotEmpty();
+
+		assertThat(searchMember.get())
+				.extracting("memberId", "name", "password", "email")
+				.contains(member.getMemberId(), member.getName(), member.getPassword(), member.getEmail());
 	}
 
-
 	@Test
-	@Transactional
 	public void 멤버_휴먼처리(){
-		memberRepository.save(Member.createMember("test","test", "1", "test@email", true, true));
-	    // given
-		Optional<Member> byId = memberRepository.findByMemberId("test");
+		// given
+		final Member member = 멤버_미인증_마케팅사용안함_픽스처();
+
 		// when
-		byId.get().changeDormantMember(true);
-		memberRepository.save(byId.get());
-	    // than
-		assertTrue(byId.get().isDormant());
+		member.inActiveMember();
+
+		memberRepository.save(member);
+
+		Optional<Member> afterMember = memberRepository.findByMemberId(member.getMemberId());
+
+		// than
+		assertThat(afterMember.get())
+				.extracting("memberId", "active")
+				.contains(member.getMemberId(), false);
 	}
 
 	@Test
 	@Transactional
 	public void 멤버_휴먼처리_해제(){
-		memberRepository.save(Member.createMember("test","test", "1", "test@email", true, true));
 		// given
-		Optional<Member> byId = memberRepository.findByMemberId("test");
+		final Member member = 멤버_미인증_마케팅사용안함_픽스처();
+
 		// when
-		byId.get().changeDormantMember(false);
-		memberRepository.save(byId.get());
+		member.activeMember();
+
+		memberRepository.save(member);
+
+		Optional<Member> afterMember = memberRepository.findByMemberId(member.getMemberId());
+
 		// than
-		assertFalse(byId.get().isDormant());
+		assertThat(afterMember.get())
+				.extracting("memberId", "active")
+				.contains(member.getMemberId(), true);
+	}
+
+	@Test
+	public void 멤버_인증처리_GREEN(){
+	    // given
+		final Member member = 멤버_미인증_마케팅사용안함_픽스처();
+
+		assertThat(member.isCertification()).isFalse();
+
+	    // when
+		member.certificateMember();
+
+		memberRepository.save(member);
+
+		// than
+		assertThat(member.isCertification()).isTrue();
+	}
+
+	@Test
+	public void 멤버_인증실패_GREEN(){
+		// given
+		// when
+		// than
+	}
+
+	@Test
+	public void 멤버_이름_수정_GREEN(){
+		// given
+		// when
+		// than
+	}
+
+	@Test
+	public void 멤버_이름_수정_RED(){
+		// given
+		// when
+		// than
+	}
+
+	@Test
+	public void 멤버_이메일_수정_GREEN(){
+		// given
+		// when
+		// than
+	}
+
+	@Test
+	public void 멤버_이메일_수정_RED(){
+		// given
+		// when
+		// than
+	}
+
+	@Test
+	public void 멤버_마케팅사용_GREEN(){
+		// given
+		// when
+		// than
+	}
+
+	@Test
+	public void 멤버_마케팅미사용_GREEN(){
+		// given
+		// when
+		// than
+	}
+
+	private Member 멤버_미인증_마케팅사용안함_픽스처(){
+		String memberId = "test";
+		String name = "testName";
+		String password = "testPassword";
+		String email = "test@email";
+
+		memberRepository.save(Member.createMember(memberId,name, password, email, false, false));
+		// when
+		Optional<Member> member = memberRepository.findByMemberId("test");
+		// than
+		assertThat(member).isNotEmpty();
+
+		assertThat(member.get())
+				.extracting("memberId", "name", "password", "email", "useMarketing", "certification", "active")
+				.contains(memberId, name, password, email, false, false, true);
+
+		return member.get();
+	}
+
+	private Member 멤버_인증_마케팅사용함_픽스처(){
+		String memberId = "test";
+		String name = "testName";
+		String password = "testPassword";
+		String email = "test@email";
+
+		memberRepository.save(Member.createMember(memberId,name, password, email, true, true));
+		// when
+		Optional<Member> member = memberRepository.findByMemberId("test");
+		// than
+		assertThat(member).isNotEmpty();
+
+		assertThat(member.get())
+				.extracting("memberId", "name", "password", "email", "useMarketing", "certification", "active")
+				.contains(memberId, name, password, email, true, true, true);
+
+		return member.get();
 	}
 }
