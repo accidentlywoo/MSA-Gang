@@ -14,14 +14,16 @@ import static javax.persistence.FetchType.LAZY;
 @Getter
 @Entity
 @Table(name = "orders")
-public class Order {
+public class Order extends BaseEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "order_id")
 	private Long id;
 
-	private String orderCode;
+	@Column(nullable = false, unique = true)
+	private String code;
 
+	@Column(nullable = false)
 	private int totalPrice;
 
 	@Enumerated(EnumType.STRING)
@@ -37,9 +39,6 @@ public class Order {
 
 	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
 	private List<OrderItem> orderItems = new ArrayList<>();
-
-	@Embedded
-	private BaseEntity baseEntity;
 
 	protected Order(){}
 
@@ -61,7 +60,9 @@ public class Order {
 	 */
 	public static Order createOrderInfo( Member member){
 		Order order = new Order(OrderStatus.ORDER, member);
+
 		member.getOrders().add(order);
+
 		return order;
 	}
 
@@ -71,7 +72,8 @@ public class Order {
 	 * @return
 	 */
 	public Long generateOrderCode(){
-		this.orderCode = "~~";
+		this.code = "~~";
+
 		return this.id;
 	}
 
@@ -83,13 +85,15 @@ public class Order {
 	 * @return
 	 */
 	public Order settingOrderItem(List<OrderItem> orderItems){
-		if(this.orderCode == null) {
+		if(this.code == null) {
 			throw new IllegalArgumentException("주문 코드가 생성되지 않았습니다.");
 		}
+
 		for(OrderItem item : orderItems){
 			orderItems.add(item);
 			item.setOrderInfo(this);
 		}
+
 		return this;
 	}
 
@@ -103,11 +107,15 @@ public class Order {
 		if(this.orderItems.size() < 1) {
 			throw new IllegalArgumentException("주문 상품 정보가 없습니다.");
 		}
+
 		for(OrderItem item : this.orderItems){
 			this.totalPrice += item.getTotalprice();
 		}
+
 		this.payment = aPayment;
+
 		aPayment.setOrderInfo(this);
+
 		return this;
 	}
 
@@ -119,11 +127,12 @@ public class Order {
 	 * @param status
 	 * @return
 	 */
-	public String changeOrderStatus(OrderStatus status){
+	public Order changeOrderStatus(OrderStatus status){
 		if(this.payment == null || !this.payment.isApproval()) {
 			throw new IllegalArgumentException("결제 정보 확인이 필요합니다.");
 		}
+
 		this.status = status;
-		return this.orderCode;
+		return this;
 	}
 }

@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 @Getter
 @Entity
-public class Payment {
+public class Payment extends BaseEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "payment_id")
@@ -16,20 +16,18 @@ public class Payment {
 	@OneToOne(mappedBy = "payment")
 	private Order order;
 
-	private String paymentMethod;
+	@Column(nullable = false)
+	private String method;
 
 	private int amountOfPayment;
 
 	// 승인여부
 	private boolean isApproval;
 
-	@Embedded
-	private BaseEntity baseEntity;
-
 	protected Payment() { }
 
 	private Payment(String paymentMethod, int amountOfPayment, boolean isApproval) {
-		this.paymentMethod = paymentMethod;
+		this.method = paymentMethod;
 		this.amountOfPayment = amountOfPayment;
 		this.isApproval = isApproval;
 	}
@@ -44,6 +42,7 @@ public class Payment {
 	public static Payment createPayment(String paymentMethod, int amountOfPayment){
 		return new Payment(paymentMethod, amountOfPayment, false);
 	}
+
 	protected void setOrderInfo(Order aOrder){
 		this.order = aOrder;
 	}

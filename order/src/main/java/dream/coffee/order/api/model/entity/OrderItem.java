@@ -9,14 +9,14 @@ import static javax.persistence.FetchType.LAZY;
 
 @Getter
 @Entity
-public class OrderItem {
+public class OrderItem extends BaseEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "order_item_id")
 	private Long id;
 
 	@ManyToOne(fetch = LAZY)
-	@JoinColumn(name = "order_code")
+	@JoinColumn(name = "code")
 	private Order order;
 
 	@OneToOne(fetch = LAZY)
@@ -26,9 +26,6 @@ public class OrderItem {
 	private int totalprice;
 
 	private int numberOfProduct;
-
-	@Embedded
-	private BaseEntity baseEntity;
 
 	protected OrderItem(){}
 

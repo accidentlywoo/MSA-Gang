@@ -11,18 +11,16 @@ import java.util.List;
  */
 @Entity
 @Getter
-public class Member {
+public class Member extends BaseEntity{
 	@Id
 	private Long id;
 	private String memberId;
-	private String memberName;
+	private String name;
 	private String password;
 	private String email;
 	private boolean useMarketing;
 	private boolean isCertification;
 	private boolean isDormant;
-	@Embedded
-	private BaseEntity baseEntity;
 
 	@OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
 	private List<Order> orders;
