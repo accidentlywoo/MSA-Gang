@@ -40,7 +40,7 @@ public class Payment extends BaseEntity {
 		this.order = aOrder;
 	}
 
-	public Payment approvalStatus(){
+	public Payment approve(){
 		this.approval = true;
 
 		return this;
