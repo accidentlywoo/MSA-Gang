@@ -42,15 +42,6 @@ public class Member extends BaseEntity{
 		this.active = true;
 	}
 
-	/**
-	 * 멤버계정 생성 - 회원가입리
-	 *
-	 * @param memberId
-	 * @param password
-	 * @param email
-	 * @param useMarketing
-	 * @return
-	 */
 	public static Member createMember(String memberId,String memberName, String password, String email, boolean useMarketing, boolean isCertification){
 		return new Member(memberId,memberName, password, email, useMarketing,isCertification);
 	}
@@ -71,7 +62,7 @@ public class Member extends BaseEntity{
 		return this;
 	}
 
-	public Member certificateMember(){
+	public Member certificate(){
 		this.certification = true;
 
 		super.setUpdatedTime(LocalDateTime.now());
@@ -79,28 +70,16 @@ public class Member extends BaseEntity{
 		return this;
 	}
 
-	public Member failCertificateMember(){
-		this.certification = false;
+	public Member changeName(String name){
+		this.name = name;
 
 		super.setUpdatedTime(LocalDateTime.now());
 
 		return this;
 	}
 
-	public Member changeMemberName(String name){
-		if(name != null){
-			this.name = name;
-		}
-
-		super.setUpdatedTime(LocalDateTime.now());
-
-		return this;
-	}
-
-	public Member changeMemberEmail(String email){
-		if(email != null){
-			this.email = email;
-		}
+	public Member changeEmail(String email){
+		this.email = email;
 
 		super.setUpdatedTime(LocalDateTime.now());
 
