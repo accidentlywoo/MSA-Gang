@@ -47,7 +47,7 @@ public class Member extends BaseEntity{
 	}
 
 	public Member activeMember(){
-		this.active = false;
+		this.active = true;
 
 		super.setUpdatedTime(LocalDateTime.now());
 
