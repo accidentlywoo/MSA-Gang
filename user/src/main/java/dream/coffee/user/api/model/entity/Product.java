@@ -13,19 +13,21 @@ import javax.persistence.*;
 public class Product extends BaseEntity{
 	@Id
 	private Long id;
+
 	@Column(nullable = false, unique = true)
 	private String code;
+
 	@Column(nullable = false)
 	private String name;
+
 	@Column(nullable = false)
 	private int price;
+
 	@Column(nullable = false)
 	private int currentStock;
-	/**
-	 * 판매 여부
-	 */
+
 	@Column(nullable = false)
-	private boolean isSale;
+	private boolean sale;
 
 	protected Product(){}
 }

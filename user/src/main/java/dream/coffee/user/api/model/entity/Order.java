@@ -15,12 +15,14 @@ import static javax.persistence.FetchType.LAZY;
 @Getter
 @Entity
 @Table(name = "orders")
-public class Order extends BaseEntity{
+public class Order extends BaseEntity {
 	@Id
 	@Column(name = "order_id")
 	private Long id;
+
 	@Column(nullable = false, unique = true)
 	private String code;
+
 	@Column(nullable = false)
 	private int totalPrice;
 

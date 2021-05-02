@@ -13,5 +13,5 @@ public class OrderRepository extends QuerydslRepositorySupport {
 	@Autowired private JPAQueryFactory queryFactory;
 
 	public OrderRepository() { super(Order.class); }
-	
+
 }
