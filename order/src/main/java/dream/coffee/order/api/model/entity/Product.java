@@ -5,6 +5,7 @@ import lombok.Getter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Random;
 import java.util.UUID;
 
@@ -38,8 +39,11 @@ public class Product extends BaseEntity {
 		this.price = price;
 		this.currentStock = stock;
 		this.sale = sale;
+		super.setCreatedAdminId(1l);
+		super.setCreatedTime(LocalDateTime.now());
 	}
 
+	@Deprecated
 	public static Product createProduct(String name, int price, int stock, boolean sale){
 		if (price < 10){
 			throw new IllegalArgumentException("상품가격의 최소단위는 10원입니다.");
@@ -53,17 +57,18 @@ public class Product extends BaseEntity {
 	}
 
 	private static String generateProductCode(String name){
-		return name+ LocalDate.now();
+		return name +"-"+ LocalDate.now();
 	}
 
 	public Product subtractStock(int orderNumberOfProduct){
 		if(currentStock < orderNumberOfProduct) {
-			throw new IllegalArgumentException("주문 수량을 초과하였습니다.");
+			throw new IllegalArgumentException("주문 수량을 초과하였습니다. 남은 수량 : " + this.getCurrentStock());
 		}
-
 		currentStock -= orderNumberOfProduct;
+
+		super.setUpdatedAdminId(1l);
+		super.setUpdatedTime(LocalDateTime.now());
 
 		return this;
 	}
-
 }
