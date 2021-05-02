@@ -57,7 +57,7 @@ class MemberTest {
 	@Transactional
 	public void 멤버_휴먼처리_해제(){
 		// given
-		final Member member = 멤버_미인증_마케팅사용안함_픽스처();
+		final Member member = 멤버_비활성화();
 
 		// when
 		member.activeMember();
@@ -180,6 +180,32 @@ class MemberTest {
 				.isEqualTo(dontUseMarketing);
 	}
 
+	private Member 멤버_비활성화(){
+		String memberId = "test";
+		String name = "testName";
+		String password = "testPassword";
+		String email = "test@email";
+
+		memberRepository.save(Member.createMember(memberId,name, password, email, false, false));
+		// when
+		Optional<Member> member = memberRepository.findByMemberId(memberId);
+
+		assertThat(member).isNotEmpty();
+
+		member.get().inActiveMember();
+
+		memberRepository.save(member.get());
+
+		Optional<Member> inactiveMember =  memberRepository.findByMemberId(memberId);
+		// than
+
+		assertThat(inactiveMember.get())
+				.extracting("memberId", "name", "password", "email", "useMarketing", "certification", "active")
+				.contains(memberId, name, password, email, false, false, false);
+
+		return member.get();
+	}
+
 	private Member 멤버_미인증_마케팅사용안함_픽스처(){
 		String memberId = "test";
 		String name = "testName";
@@ -188,7 +214,7 @@ class MemberTest {
 
 		memberRepository.save(Member.createMember(memberId,name, password, email, false, false));
 		// when
-		Optional<Member> member = memberRepository.findByMemberId("test");
+		Optional<Member> member = memberRepository.findByMemberId(memberId);
 		// than
 		assertThat(member).isNotEmpty();
 
@@ -207,7 +233,7 @@ class MemberTest {
 
 		memberRepository.save(Member.createMember(memberId,name, password, email, true, true));
 		// when
-		Optional<Member> member = memberRepository.findByMemberId("test");
+		Optional<Member> member = memberRepository.findByMemberId(memberId);
 		// than
 		assertThat(member).isNotEmpty();
 
