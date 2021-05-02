@@ -1,6 +1,6 @@
 package dream.coffee.order.api.model.entity;
 
-import dream.coffee.order.api.orders.repository.OrderRepository;
+import dream.coffee.order.api.repository.OrderRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

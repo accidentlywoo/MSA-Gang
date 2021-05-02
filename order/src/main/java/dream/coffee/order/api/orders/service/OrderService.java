@@ -1,8 +1,8 @@
 package dream.coffee.order.api.orders.service;
 
-import dream.coffee.order.api.orders.repository.OrderItemRepository;
-import dream.coffee.order.api.orders.repository.OrderRepository;
-import dream.coffee.order.api.orders.repository.ProductRepository;
+import dream.coffee.order.api.repository.OrderItemRepository;
+import dream.coffee.order.api.repository.OrderRepository;
+import dream.coffee.order.api.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
