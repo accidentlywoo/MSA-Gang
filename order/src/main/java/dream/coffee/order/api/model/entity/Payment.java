@@ -1,5 +1,6 @@
 package dream.coffee.order.api.model.entity;
 
+import dream.coffee.order.api.model.PaymentMethod;
 import dream.coffee.order.api.model.entity.baseEntity.BaseEntity;
 import lombok.Getter;
 
@@ -16,45 +17,32 @@ public class Payment extends BaseEntity {
 	@OneToOne(mappedBy = "payment")
 	private Order order;
 
-	@Column(nullable = false)
-	private String method;
+	@Enumerated
+	private PaymentMethod method;
 
 	private int amountOfPayment;
 
-	// 승인여부
-	private boolean isApproval;
+	private boolean approval;
 
 	protected Payment() { }
 
-	private Payment(String paymentMethod, int amountOfPayment, boolean isApproval) {
-		this.method = paymentMethod;
+	private Payment(PaymentMethod method, int amountOfPayment) {
+		this.method = method;
 		this.amountOfPayment = amountOfPayment;
-		this.isApproval = isApproval;
+		this.approval = false;
 	}
 
-	/**
-	 * 결제정보 생성
-	 *
-	 * @param paymentMethod
-	 * @param amountOfPayment
-	 * @return
-	 */
-	public static Payment createPayment(String paymentMethod, int amountOfPayment){
-		return new Payment(paymentMethod, amountOfPayment, false);
+	public static Payment createPayment(PaymentMethod method, int amountOfPayment){
+		return new Payment(method, amountOfPayment);
 	}
 
 	protected void setOrderInfo(Order aOrder){
 		this.order = aOrder;
 	}
 
-	/**
-	 * 결제 승인 정보 변경
-	 *
-	 * @param status
-	 * @return
-	 */
-	public Payment changeApprovalStatus(boolean status){
-		this.isApproval = true;
+	public Payment approvalStatus(){
+		this.approval = true;
+
 		return this;
 	}
 }
