@@ -1,2 +1,13 @@
 -- Test Infomation
-INSERT INTO DreamCoffee.member (created_admin_id, created_time, updated_admin_id, updated_time, email, is_certification, is_dormant, member_id, member_name, password, use_marketing) VALUES (1, '2021-04-14 11:23:40', 1, '2021-04-14 11:23:43', 'test@email.com', true, false, 'alreadyExist', 'test', 'alreadyExist', true);
+INSERT INTO DreamCoffee.member (created_admin_id, created_time, updated_admin_id, updated_time, email, certification, active, member_id, name, password, use_marketing) VALUES (1, '2021-04-14 11:23:40', 1, '2021-04-14 11:23:43', 'test@email.com', true, false, 'alreadyExist', 'test', 'alreadyExist', true);
+
+-- Product
+INSERT INTO product(id, created_admin_id, created_time, updated_admin_id, updated_time, current_stock, sale, price, code, name) VALUES (1, 1, '2021-05-02 02:02:46', null, null, 2500, true, 5000, 'americano-2021-05-02', 'americano');
+INSERT INTO product(id, created_admin_id, created_time, updated_admin_id, updated_time, current_stock, sale, price, code, name) VALUES (2, 1, '2021-05-02 02:03:10', null, null, 250, true, 5000, 'magazine-2021-05-02', 'magazine');
+INSERT INTO product(id, created_admin_id, created_time, updated_admin_id, updated_time, current_stock, sale, price, code, name) VALUES (3, 1, '2021-05-02 02:03:51', null, null, 1500, true, 6000, 'cofe-latte-2021-05-02', 'cofe-latte');
+INSERT INTO product(id, created_admin_id, created_time, updated_admin_id, updated_time, current_stock, sale, price, code, name) VALUES (4, 1, '2021-05-02 02:04:11', null, null, 500, true, 7000, 'cappuccino-2021-05-02', 'cappuccino');
+INSERT INTO product(id, created_admin_id, created_time, updated_admin_id, updated_time, current_stock, sale, price, code, name) VALUES (5, 1, '2021-05-02 02:04:28', null, null, 100, true, 8000, 'conpanna-2021-05-02', 'conpanna');
+INSERT INTO product(id, created_admin_id, created_time, updated_admin_id, updated_time, current_stock, sale, price, code, name) VALUES (6, 1, '2021-05-02 02:04:43', null, null, 2000, true, 4000, 'espresso-2021-05-02', 'espresso');
+INSERT INTO product(id, created_admin_id, created_time, updated_admin_id, updated_time, current_stock, sale, price, code, name) VALUES (7, 1, '2021-05-02 02:05:03', null, null, 1000, true, 6000, 'green-tea-2021-05-02', 'green-tea');
+INSERT INTO product(id, created_admin_id, created_time, updated_admin_id, updated_time, current_stock, sale, price, code, name) VALUES (8, 1, '2021-05-02 02:05:20', null, null, 1000, true, 6000, 'chamomile-tea-2021-05-02', 'chamomile-tea');
+INSERT INTO product(id, created_admin_id, created_time, updated_admin_id, updated_time, current_stock, sale, price, code, name) VALUES (9, 1, '2021-05-02 02:05:32', null, null, 1000, true, 6000, 'earl-gray-tea-2021-05-02', 'earl-gray-tea');
