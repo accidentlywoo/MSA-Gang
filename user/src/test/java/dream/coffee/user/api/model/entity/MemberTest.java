@@ -1,6 +1,7 @@
 package dream.coffee.user.api.model.entity;
 
 import dream.coffee.user.api.repository.MemberRepository;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -79,7 +80,7 @@ class MemberTest {
 		assertThat(member.isCertification()).isFalse();
 
 	    // when
-		member.certificateMember();
+		member.certificate();
 
 		memberRepository.save(member);
 
@@ -88,52 +89,95 @@ class MemberTest {
 	}
 
 	@Test
-	public void 멤버_인증실패_GREEN(){
-		// given
-		// when
-		// than
-	}
-
-	@Test
 	public void 멤버_이름_수정_GREEN(){
 		// given
-		// when
-		// than
-	}
+		String changeName = "changeName";
 
-	@Test
-	public void 멤버_이름_수정_RED(){
-		// given
+		final Member member = 멤버_미인증_마케팅사용안함_픽스처();
+
+		final String beaforeName = member.getName();
+
+		assertThat(beaforeName).isNotEqualTo(changeName);
+
 		// when
+		memberRepository.save(member.changeName(changeName));
+
+		final Optional<Member> after = memberRepository.findByMemberId(member.getMemberId());
+
 		// than
+		assertThat(after).isNotEmpty();
+
+		assertThat(after.get())
+				.extracting("name")
+				.isEqualTo(changeName);
 	}
 
 	@Test
 	public void 멤버_이메일_수정_GREEN(){
 		// given
-		// when
-		// than
-	}
+		String changeEmail = "change@test.com";
 
-	@Test
-	public void 멤버_이메일_수정_RED(){
-		// given
+		final Member member = 멤버_미인증_마케팅사용안함_픽스처();
+
+		final String beaforeEmail = member.getEmail();
+
+		assertThat(beaforeEmail).isNotEqualTo(changeEmail);
+
 		// when
+		memberRepository.save(member.changeEmail(changeEmail));
+
+		final Optional<Member> after = memberRepository.findByMemberId(member.getMemberId());
+
 		// than
+		assertThat(after).isNotEmpty();
+
+		assertThat(after.get())
+				.extracting("email")
+				.isEqualTo(changeEmail);
 	}
 
 	@Test
 	public void 멤버_마케팅사용_GREEN(){
 		// given
+		boolean useMarketing = true;
+
+		final Member member = 멤버_미인증_마케팅사용안함_픽스처();
+
+		assertThat(member.isUseMarketing()).isNotEqualTo(useMarketing);
+
 		// when
+		memberRepository.save(member.useMarketing());
+
+		final Optional<Member> after = memberRepository.findByMemberId(member.getMemberId());
+
 		// than
+		assertThat(after).isNotEmpty();
+
+		assertThat(after.get())
+				.extracting("useMarketing")
+				.isEqualTo(useMarketing);
 	}
 
 	@Test
 	public void 멤버_마케팅미사용_GREEN(){
 		// given
+		boolean dontUseMarketing = false;
+
+		final Member member = 멤버_인증_마케팅사용함_픽스처();
+
+		assertThat(member.isUseMarketing()).isNotEqualTo(dontUseMarketing);
+
 		// when
+		memberRepository.save(member.notUseMarketing());
+
+		final Optional<Member> after = memberRepository.findByMemberId(member.getMemberId());
+
 		// than
+		assertThat(after).isNotEmpty();
+
+		assertThat(after.get())
+				.extracting("useMarketing")
+				.isEqualTo(dontUseMarketing);
 	}
 
 	private Member 멤버_미인증_마케팅사용안함_픽스처(){
